@@ -503,3 +503,221 @@ function initNexusDiagram() {
     });
   });
 }
+
+
+/* ==========================================================================
+   Dynamic Multi-Tab Builder for Research Statement (research.html)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  initResearchTabsSystem();
+});
+
+async function initResearchTabsSystem() {
+  const tablistEl = document.getElementById('research-tablist');
+  const panelsWrapper = document.getElementById('research-panels-wrapper');
+  if (!tablistEl || !panelsWrapper) return;
+
+  const showAllBtn = document.getElementById('toggle-all-research-tabs');
+
+  bindResearchAccessibleTabs(tablistEl, panelsWrapper);
+
+  try {
+    const res = await fetch('content/research.md');
+    if (res.ok) {
+      const mdText = await res.text();
+      buildResearchTabsFromMarkdown(mdText, tablistEl, panelsWrapper);
+    }
+  } catch (err) {
+    console.warn('Using embedded fallback tabs for research.html');
+  }
+
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+      const isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
+      const allPanels = panelsWrapper.querySelectorAll('.tab-panel');
+      if (isExpanded) {
+        showAllBtn.setAttribute('aria-pressed', 'false');
+        showAllBtn.textContent = '📖 Read Full Statement on One Page';
+        const selectedTab = tablistEl.querySelector('[aria-selected="true"]');
+        const activeId = selectedTab ? selectedTab.getAttribute('aria-controls') : (allPanels[0] && allPanels[0].id);
+        allPanels.forEach(p => {
+          if (p.id === activeId) {
+            p.classList.add('active');
+            p.removeAttribute('hidden');
+          } else {
+            p.classList.remove('active');
+            p.setAttribute('hidden', '');
+          }
+        });
+        announce('Switched to tabbed view');
+      } else {
+        showAllBtn.setAttribute('aria-pressed', 'true');
+        showAllBtn.textContent = '🗂️ Return to Tabbed View';
+        allPanels.forEach(p => {
+          p.classList.add('active');
+          p.removeAttribute('hidden');
+        });
+        announce('Showing all research sections and grants on one page');
+      }
+    });
+  }
+}
+
+function buildResearchTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
+  const grantsPanel = document.getElementById('panel-grants');
+  const lines = mdText.split(/\r?\n/);
+
+  let pageTitle = 'Research Statement & Agenda';
+  const sections = [];
+  let currentSection = null;
+
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('# ')) {
+      pageTitle = trimmed.slice(2).trim();
+    } else if (trimmed.startsWith('## ')) {
+      if (currentSection) sections.push(currentSection);
+      currentSection = {
+        title: trimmed.slice(3).trim(),
+        bodyLines: []
+      };
+    } else {
+      if (currentSection) {
+        currentSection.bodyLines.push(line);
+      }
+    }
+  });
+  if (currentSection) sections.push(currentSection);
+
+  const headingEl = document.getElementById('research-main-heading');
+  if (headingEl) headingEl.textContent = pageTitle;
+
+  if (!sections.length) return;
+
+  let tabsHtml = '';
+  sections.forEach((sec, idx) => {
+    const isSelected = idx === 0 ? 'true' : 'false';
+    const tabIndex = idx === 0 ? '0' : '-1';
+    tabsHtml += `
+      <button type="button" role="tab" class="tab-btn"
+        id="tab-res-${idx + 1}"
+        aria-selected="${isSelected}"
+        aria-controls="panel-res-${idx + 1}"
+        tabindex="${tabIndex}">
+        ${sec.title}
+      </button>
+    `;
+  });
+
+  tabsHtml += `
+    <button type="button" role="tab" class="tab-btn"
+      id="tab-grants"
+      aria-selected="false"
+      aria-controls="panel-grants"
+      tabindex="-1">
+      Grants
+    </button>
+  `;
+  tablistEl.innerHTML = tabsHtml;
+
+  panelsWrapper.innerHTML = '';
+  sections.forEach((sec, idx) => {
+    const panelDiv = document.createElement('section');
+    panelDiv.id = `panel-res-${idx + 1}`;
+    panelDiv.setAttribute('role', 'tabpanel');
+    panelDiv.setAttribute('aria-labelledby', `tab-res-${idx + 1}`);
+    panelDiv.setAttribute('tabindex', '0');
+    panelDiv.className = idx === 0 ? 'tab-panel active markdown-body' : 'tab-panel markdown-body';
+    if (idx !== 0) panelDiv.setAttribute('hidden', '');
+
+    const bodyHtml = parseSimpleMarkdown(sec.bodyLines.join('\n'));
+    const prevBtn = idx > 0
+      ? `<button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-res-${idx}">← Previous: ${sections[idx - 1].title}</button>`
+      : `<span></span>`;
+    const nextTarget = idx < sections.length - 1 ? `tab-res-${idx + 2}` : 'tab-grants';
+    const nextLabel = idx < sections.length - 1 ? `Next: ${sections[idx + 1].title} →` : `Next: Grants →`;
+
+    panelDiv.innerHTML = `
+      <h2>${sec.title}</h2>
+      ${bodyHtml}
+      <div class="tab-footer-nav">
+        ${prevBtn}
+        <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="${nextTarget}">${nextLabel}</button>
+      </div>
+    `;
+    panelsWrapper.appendChild(panelDiv);
+  });
+
+  if (grantsPanel) {
+    grantsPanel.classList.remove('active');
+    grantsPanel.setAttribute('hidden', '');
+    const prevBtnInGrants = grantsPanel.querySelector('.tab-step-btn');
+    if (prevBtnInGrants && sections.length) {
+      prevBtnInGrants.setAttribute('data-goto-tab', `tab-res-${sections.length}`);
+      prevBtnInGrants.textContent = `← Previous: ${sections[sections.length - 1].title}`;
+    }
+    panelsWrapper.appendChild(grantsPanel);
+  }
+
+  bindResearchAccessibleTabs(tablistEl, panelsWrapper);
+}
+
+function bindResearchAccessibleTabs(tablistEl, panelsWrapper) {
+  const tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(panelsWrapper.querySelectorAll('[role="tabpanel"]'));
+
+  function activateTab(tab, setFocus = true) {
+    tabs.forEach(t => {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('hidden', '');
+    });
+
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    if (setFocus) tab.focus();
+
+    const targetId = tab.getAttribute('aria-controls');
+    const targetPanel = document.getElementById(targetId);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      targetPanel.removeAttribute('hidden');
+    }
+
+    const showAllBtn = document.getElementById('toggle-all-research-tabs');
+    if (showAllBtn) {
+      showAllBtn.setAttribute('aria-pressed', 'false');
+      showAllBtn.textContent = '📖 Read Full Statement on One Page';
+    }
+
+    announce(`Selected tab: ${tab.textContent.trim()}`);
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab, false));
+    tab.addEventListener('keydown', e => {
+      let newIndex = null;
+      if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') newIndex = 0;
+      if (e.key === 'End') newIndex = tabs.length - 1;
+      if (newIndex !== null) {
+        e.preventDefault();
+        activateTab(tabs[newIndex], true);
+      }
+    });
+  });
+
+  panelsWrapper.querySelectorAll('.tab-step-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTabId = btn.getAttribute('data-goto-tab');
+      const targetTab = document.getElementById(targetTabId);
+      if (targetTab) {
+        activateTab(targetTab, true);
+      }
+    });
+  });
+}
