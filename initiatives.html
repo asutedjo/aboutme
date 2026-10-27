@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Initiatives & Faculty Development — Academic Portfolio of Dr. Armanto Sutedjo">
+  <title>Initiatives | Dr. Armanto Sutedjo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <aside class="a11y-bar" aria-label="Accessibility preferences">
+    <div class="container a11y-container">
+      <span style="font-weight:600; color:var(--text-light);">Accessibility &amp; Display Controls:</span>
+      <div class="a11y-controls">
+        <button type="button" class="a11y-btn" id="toggle-theme" aria-pressed="false">🌓 Dark Mode</button>
+        <button type="button" class="a11y-btn" id="toggle-contrast" aria-pressed="false">👁️ High Contrast</button>
+        <button type="button" class="a11y-btn" id="toggle-font" aria-pressed="false">🔤 Atkinson Hyperlegible</button>
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <span class="brand-name">Dr. Armanto Sutedjo</span>
+        <span class="brand-title">Learning, Design &amp; Technology • AI in Education</span>
+      </a>
+      <nav aria-label="Primary portfolio navigation">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="nexus.html">Research–Teaching Nexus</a></li>
+          <li><a href="research.html">Research & Grants</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="initiatives.html" aria-current="page">Initiatives</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" role="main">
+    
+    <!-- Section 1: Workshops (Tabbed by Topic) -->
+    <section class="card" aria-labelledby="workshops-heading">
+      <div class="tabs-header-bar">
+        <div>
+          <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent);">Faculty Development Programming</span>
+          <h1 id="workshops-heading" style="font-size:2rem; font-weight:800; color:var(--text-main); margin-top:0.2rem;">Workshops &amp; Professional Learning</h1>
+        </div>
+        <div>
+          <button type="button" class="btn btn-secondary" id="toggle-all-workshop-tabs" aria-pressed="false" style="padding:0.5rem 0.9rem; font-size:0.85rem;">
+            📖 Read All Workshop Topics on One Page
+          </button>
+        </div>
+      </div>
+
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+        Designed and facilitated hands-on institutional workshops empowering faculty with prompt engineering, AI literacy, learning analytics, and evidence-based course design. Select a tab below to explore specific topic areas offered.
+      </p>
+
+      <!-- Accessible ARIA Tablist for Workshops (5 tabs fitting strict width-fit grid) -->
+      <div class="tablist-nav" id="workshop-tablist" role="tablist" aria-label="Workshop Topic Categories">
+        <button type="button" role="tab" class="tab-btn" id="tab-ws-1" aria-selected="true" aria-controls="panel-ws-1" tabindex="0">
+          GenAI Foundations &amp; Copilot
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-ws-2" aria-selected="false" aria-controls="panel-ws-2" tabindex="-1">
+          Pedagogy &amp; Course Design
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-ws-3" aria-selected="false" aria-controls="panel-ws-3" tabindex="-1">
+          Assessment &amp; Analytics
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-ws-4" aria-selected="false" aria-controls="panel-ws-4" tabindex="-1">
+          AI Ethics &amp; Chatbots
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-ws-5" aria-selected="false" aria-controls="panel-ws-5" tabindex="-1">
+          Advanced Integration
+        </button>
+      </div>
+
+      <!-- Tab Panels Container -->
+      <div id="workshop-panels-wrapper">
+
+        <!-- Tab 1: GenAI Foundations & Copilot -->
+        <section id="panel-ws-1" role="tabpanel" aria-labelledby="tab-ws-1" tabindex="0" class="tab-panel active markdown-body">
+          <h2>Generative AI Foundations &amp; Microsoft Copilot</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Introductory and foundational sessions introducing faculty to generative AI models and practical productivity tools.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+            <li><strong>Introduction to Generative AI</strong> (Nov 2023) — Foundational overview of large language models and higher education impact.</li>
+            <li><strong>Overview and Exploration of Copilot</strong> (Jan 2024) — Hands-on exploration of Microsoft Copilot enterprise capabilities.</li>
+            <li><strong>Prompt Engineering Essentials: A Beginner's Guide</strong> (Feb 2024) — Structuring effective prompts for teaching and research productivity.</li>
+            <li><strong>Introducing Gemini: Google's AI Model</strong> (Sep 2025) — Exploring Google's multimodal AI architecture for academic workflows.</li>
+            <li><strong>Perplexity AI for Teaching and Research: A Practical Introduction</strong> (Sep 2025) — Leveraging conversational search and citation engines for literature reviews.</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <span></span>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-2">Next: Pedagogy &amp; Course Design →</button>
+          </div>
+        </section>
+
+        <!-- Tab 2: Pedagogy & Course Design -->
+        <section id="panel-ws-2" role="tabpanel" aria-labelledby="tab-ws-2" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Pedagogy &amp; Course Design</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Structured course design series establishing foundational learning outcomes, assessments, and engaging student experiences.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+            <li><strong>Learning Outcomes - Foundations of a Well-Designed Course</strong> (Jun 2024, Nov 2024, Jul 2025) — Crafting measurable learning objectives.</li>
+            <li><strong>Assessments - How Do You Know if Students are Achieving Learning Outcomes?</strong> (Jun 2024, Nov 2024, Jul 2025) — Designing aligned formative and summative assessments.</li>
+            <li><strong>Learning Experiences - Designing for Deep Learning and Student Engagement</strong> (Jul 2024, Nov 2024, Sep 2025) — Active learning strategies and student-centered course structures.</li>
+            <li><strong>Dynamic Engagement with UDL and LMS Tools</strong> (Jan 2025) — Universal Design for Learning principles integrated within digital learning environments.</li>
+            <li><strong>Building Community and Dialogue through Your Assignments</strong> (Sep 2025) — Fostering peer interaction and critical inquiry.</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-1">← Previous: GenAI Foundations</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-3">Next: Assessment &amp; Analytics →</button>
+          </div>
+        </section>
+
+        <!-- Tab 3: Assessment & Analytics -->
+        <section id="panel-ws-3" role="tabpanel" aria-labelledby="tab-ws-3" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Assessment &amp; Learning Analytics</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Workshops leveraging Canvas analytics, formative assessment tools, and peer review strategies.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+            <li><strong>How can Analytics Shape Your Teaching? Delve into New Analytics in Canvas</strong> (Mar 2024, Jul 2024) — Interpreting LMS engagement data for timely interventions.</li>
+            <li><strong>Data Week: Numbers Don't Lie! Taking Actions with Canvas New Analytics</strong> (Jan 2025) — Actionable data-informed course improvements.</li>
+            <li><strong>Peerceptiv's New Features for Peer Assessment</strong> (Sep 2024) — Implementing structured peer review workflows.</li>
+            <li><strong>Designing Effective Peer Assessments: A Hands-On Workshop with Peerceptiv</strong> (Sep 2025) — Calibrated peer grading rubrics.</li>
+            <li><strong>Click, Engage, Learn: Using Poll Everywhere to Activate Student Thinking</strong> (Sep 2025) — Formative classroom polling and real-time feedback.</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-2">← Previous: Pedagogy</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-4">Next: AI Ethics &amp; Chatbots →</button>
+          </div>
+        </section>
+
+        <!-- Tab 4: AI Ethics & Chatbots -->
+        <section id="panel-ws-4" role="tabpanel" aria-labelledby="tab-ws-4" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>AI Ethics, Chatbots &amp; Higher-Order Thinking</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Focusing on academic integrity, ethical frameworks, and course-specific AI assistants.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+            <li><strong>Generative AI: What about Ethics?</strong> (Mar 2024) — Addressing academic integrity, bias, and institutional guidelines.</li>
+            <li><strong>Adapting AI in Education Using Course-Specific Chatbots</strong> (Sep 2024) — Building custom teaching assistants for specific course domains.</li>
+            <li><strong>Designing Higher Order Thinking Questions using Copilots</strong> (Oct 2024, Mar 2025) — Scaffolding critical thinking through AI prompting.</li>
+            <li><strong>Transforming Course Material into Collaborative Learning</strong> (Jan 2025) — AI-assisted curriculum authoring.</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-3">← Previous: Assessment &amp; Analytics</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-5">Next: Advanced Integration →</button>
+          </div>
+        </section>
+
+        <!-- Tab 5: Advanced Integration -->
+        <section id="panel-ws-5" role="tabpanel" aria-labelledby="tab-ws-5" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Advanced Integration &amp; Specialized Workflows</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Advanced pedagogical applications across specialized medical, disciplinary, and productivity workflows.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+            <li><strong>Proctoring Your Exam using Respondus LockDown Browser</strong> (Jun 2025) — Secure digital assessment configuration.</li>
+            <li><strong>Integrating AI in Medical Work</strong> (Jun 2025) — Clinical AI literacy and professional application.</li>
+            <li><strong>Integrating Social Learning and Peer Review Strategies</strong> (Jun 2025) — Collaborative cohort learning designs.</li>
+            <li><strong>From Clicks to Credits: Leveraging Poll Everywhere for Graded and Formative Assessment</strong> (Oct 2025) — Blended assessment frameworks.</li>
+            <li><strong>Maximizing Productivity with TAMU AI Tools</strong> (Oct 2025) — Streamlining faculty workflows with institutional tools.</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-4">← Previous: AI Ethics &amp; Chatbots</button>
+            <a href="#peer-heading" class="btn btn-primary">Scroll to Hear from Peers →</a>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Hear from Peers -->
+    <section class="card" id="peer-section" aria-labelledby="peer-heading">
+      <h2 id="peer-heading" style="font-size:1.5rem; color:var(--primary); margin-bottom:0.75rem;">Hear from Peers: Navigating AI in the Classroom</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1rem;">
+        <strong>Initiative Overview:</strong> Founded and currently lead as Organizer and Host for this ongoing institutional webinar series (Fall 2023 – Present). The series creates a collaborative faculty community where educators share classroom-tested strategies, navigate pedagogical challenges, and exchange insights on integrating generative artificial intelligence into diverse disciplines.
+      </p>
+    </section>
+
+    <!-- Section 3: AI Playground -->
+    <section class="card" id="playground-section" aria-labelledby="playground-heading">
+      <h2 id="playground-heading" style="font-size:1.5rem; color:var(--primary); margin-bottom:0.75rem;">AI Playground</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1rem;">
+        <strong>Initiative Overview:</strong> Lead Facilitator for this hands-on workshop series (Fall 2023 – Present). The AI Playground provides faculty with a safe, experimental environment to test emerging generative tools, practice prompt engineering, and collaborate on building course-specific AI assets with direct pedagogical guidance.
+      </p>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <strong>Armanto Sutedjo, Ph.D.</strong> — Academic Portfolio<br>
+        <span>College Station, TX • <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></span>
+      </div>
+      <div>
+        <span>WCAG 2.1 AA/AAA Accessible Digital Dossier</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

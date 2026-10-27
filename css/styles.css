@@ -546,3 +546,24 @@ footer {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* Workshops 5-Column Tablist Grid */
+#workshop-tablist {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+}
+@media (max-width: 1024px) {
+  #workshop-tablist {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 600px) {
+  #workshop-tablist {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 400px) {
+  #workshop-tablist {
+    grid-template-columns: 1fr !important;
+  }
+}
