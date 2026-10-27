@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publications — Academic Portfolio of Dr. Armanto Sutedjo">
+  <title>Publications | Dr. Armanto Sutedjo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <aside class="a11y-bar" aria-label="Accessibility preferences">
+    <div class="container a11y-container">
+      <span style="font-weight:600; color:var(--text-light);">Accessibility & Display Controls:</span>
+      <div class="a11y-controls">
+        <button type="button" class="a11y-btn" id="toggle-theme" aria-pressed="false">🌓 Dark Mode</button>
+        <button type="button" class="a11y-btn" id="toggle-contrast" aria-pressed="false">👁️ High Contrast</button>
+        <button type="button" class="a11y-btn" id="toggle-font" aria-pressed="false">🔤 Atkinson Hyperlegible</button>
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <span class="brand-name">Dr. Armanto Sutedjo</span>
+        <span class="brand-title">Learning, Design & Technology • AI in Education</span>
+      </a>
+      <nav aria-label="Primary portfolio navigation">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="nexus.html">Research–Teaching Nexus</a></li>
+          <li><a href="research.html">Research & Grants</a></li>
+          <li><a href="publications.html" aria-current="page">Publications</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="service.html">Service & Leadership</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" role="main">
+    <section class="card" aria-labelledby="pubs-page-heading">
+      <h1 id="pubs-page-heading" style="font-size:2rem; margin-bottom:0.5rem;">Publications &amp; Conference Scholarship</h1>
+      <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+        To add or edit publications without touching HTML, open <code>content/portfolio-data.json</code> in your GitHub repository.
+      </p>
+
+      <div class="filter-bar" role="toolbar" aria-label="Filter publications">
+        <button type="button" class="filter-btn active" data-filter="all">All Scholarship</button>
+        <button type="button" class="filter-btn" data-filter="journal">Journal Articles &amp; Book Chapters</button>
+        <button type="button" class="filter-btn" data-filter="conference">Conferences &amp; Proceedings</button>
+        <button type="button" class="filter-btn" data-filter="review">Manuscripts Under Review</button>
+      </div>
+
+      <div id="publications-list">
+        <p>Loading publications from <code>content/portfolio-data.json</code>...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <strong>Armanto Sutedjo, Ph.D.</strong> — Academic Portfolio<br>
+        <span>College Station, TX • <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></span>
+      </div>
+      <div>
+        <span>Content powered by plain-text Markdown (<code>content/*.md</code>) &amp; JSON (<code>content/portfolio-data.json</code>)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

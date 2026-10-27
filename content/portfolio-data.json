@@ -1,0 +1,236 @@
+{
+  "profile": {
+    "name": "Armanto Sutedjo, Ph.D.",
+    "title": "Educational Researcher & Learning Systems Leader",
+    "location": "College Station, TX",
+    "email": "armanto.sutedjo@gmail.com",
+    "phone": "(346) 632-1453",
+    "current_role": "Senior Educational Consultant, Center for Teaching Excellence",
+    "keywords": [
+      "Generative AI in Education",
+      "Design-Based Research (DBR)",
+      "Human-AI Interaction",
+      "Self-Regulated Learning",
+      "Instructional Design & Technology",
+      "Enterprise Learning Analytics"
+    ]
+  },
+  "education": [
+    {
+      "year": "2023",
+      "degree": "Doctor of Philosophy in Educational Psychology: Learning, Design, and Technology",
+      "institution": "Texas A&M University, College Station, TX"
+    },
+    {
+      "year": "2014",
+      "degree": "Master of Education in Curriculum and Instruction",
+      "institution": "Houston Baptist University, Houston, TX"
+    },
+    {
+      "year": "2005",
+      "degree": "Master of Management in Business",
+      "institution": "IPMI Business School, Jakarta, Indonesia"
+    },
+    {
+      "year": "1999",
+      "degree": "Bachelor of Science in Industrial Engineering",
+      "institution": "Trisakti University, Jakarta, Indonesia"
+    }
+  ],
+  "grants": [
+    {
+      "period": "2026–2027",
+      "title": "Self-Regulation and Metacognition in Student's Learning with Generative AI",
+      "agency": "Galloway Foundation",
+      "role": "Primary Investigator",
+      "amount": "$20,000 + $4,000 (2 faculty fellows)",
+      "status": "Funded"
+    },
+    {
+      "period": "2025–2026",
+      "title": "ArguMath: AI-Simulated Classrooms for Training Preservice Teachers to Orchestrate Collective Mathematical Argumentation",
+      "agency": "Division of Research (Collaborative Seed Grants)",
+      "role": "Collaborator",
+      "amount": "$25,000",
+      "status": "Funded"
+    },
+    {
+      "period": "2025–2026",
+      "title": "Generative AI Integration in Veterinary Education: AI Data Entry, AI Tutor, and AI Literacy Outcomes",
+      "agency": "Institute of Data Science",
+      "role": "Co-Investigator",
+      "amount": "$5,000 OpenAI API credits + $2,000",
+      "status": "Funded"
+    },
+    {
+      "period": "2025–2026",
+      "title": "Promoting Classroom-Level Innovation through Generative AI",
+      "agency": "Galloway Foundation",
+      "role": "Primary Investigator",
+      "amount": "$20,000",
+      "status": "Funded"
+    },
+    {
+      "period": "2024–2025",
+      "title": "Evidence-Based Teaching and Learning with Generative AI Research",
+      "agency": "Galloway Foundation",
+      "role": "Primary Investigator",
+      "amount": "$20,000",
+      "status": "Funded"
+    },
+    {
+      "period": "2023–2024",
+      "title": "Generative Artificial Intelligence (AI) for Teaching and Learning",
+      "agency": "Galloway Foundation",
+      "role": "Co-Investigator",
+      "amount": "$36,000",
+      "status": "Funded"
+    }
+  ],
+  "publications": [
+    {
+      "category": "journal",
+      "type_label": "Journal Article",
+      "year": "2026",
+      "title": "Assessing faculty self-perceived knowledge in using generative AI to teach 21st-century skills",
+      "authors": "Sutedjo, A., Chowdhury, M., & Liu, S. P.",
+      "venue": "Frontiers in Education, 11, Article 1913310.",
+      "doi": "https://doi.org/10.3389/feduc.2026.1913310"
+    },
+    {
+      "category": "conference",
+      "type_label": "Conference Paper & Preprint",
+      "year": "2026",
+      "title": "ArguMath: AI-simulated environment for pre-service teacher training in orchestrating classroom mathematics argumentation",
+      "authors": "Chun, J., Zhuang, Y., Sutedjo, A., Xu, C., Ren, R., & Xia, M.",
+      "venue": "Presented at the 2026 International Conference on Artificial Intelligence in Education (AIED), Seoul, South Korea / arXiv.",
+      "doi": "https://doi.org/10.48550/arXiv.2604.22205"
+    },
+    {
+      "category": "review",
+      "type_label": "Manuscript Submitted",
+      "year": "2026",
+      "title": "ChatGPT versus veterinary students for clinical data extraction: A mixed-methods study",
+      "authors": "Chang, Y., Sutedjo, A., & Chu, C. P.",
+      "venue": "Manuscript submitted for publication.",
+      "doi": ""
+    },
+    {
+      "category": "review",
+      "type_label": "Manuscript Submitted",
+      "year": "2026",
+      "title": "The proof of the (re)design is in the data",
+      "authors": "Varughese, J., Sutedjo, A., & Ferrara, J.",
+      "venue": "Manuscript submitted to Journal of Teaching and Learning with Technology.",
+      "doi": ""
+    },
+    {
+      "category": "journal",
+      "type_label": "Journal Article",
+      "year": "2025",
+      "title": "Generative AI in higher education: A cross-institutional study on faculty preparation and resources",
+      "authors": "Sutedjo, A., Liu, S. P., & Chowdhury, M.",
+      "venue": "Studies in Technology Enhanced Learning, 4(1).",
+      "doi": "http://dx.doi.org/10.21428/8c225f6e.955a547c"
+    },
+    {
+      "category": "journal",
+      "type_label": "Journal Article",
+      "year": "2024",
+      "title": "Effects of virtual reality as a patient education tool: A meta-analysis",
+      "authors": "Li, Y., Kim, M., & Sutedjo, A.",
+      "venue": "Journal of Educational Technology Development and Exchange, 17(2), 216–228.",
+      "doi": "https://doi.org/10.18785/jetde.1702.10"
+    },
+    {
+      "category": "review",
+      "type_label": "Manuscript in Review",
+      "year": "In Review",
+      "title": "Organizing implementation practices in digital game-based learning research in STEM education: A systematic review",
+      "authors": "Sutedjo, A., & Pedersen, S. J.",
+      "venue": "In review.",
+      "doi": ""
+    },
+    {
+      "category": "conference",
+      "type_label": "Conference Proceedings",
+      "year": "2023",
+      "title": "The French Impressionism through the lens of ARTé: Lumière—Reflections of art history instructors in higher education",
+      "authors": "Avci, H., Sutedjo, A., Pedersen, S. J., & Thomas, A.",
+      "venue": "Society for Information Technology & Teacher Education International Conference (pp. 516–520). AACE.",
+      "doi": ""
+    },
+    {
+      "category": "journal",
+      "type_label": "Book Chapter",
+      "year": "2021",
+      "title": "A naturalistic inquiry into digital game-based learning in STEM classes from the instructors' perspective",
+      "authors": "Li, Y., Sutedjo, A., Ramos, S. J., Garcimartin, H. R., & Thomas, A.",
+      "venue": "In Game-based learning across the disciplines (pp. 229–244). Springer.",
+      "doi": "https://doi.org/10.1007/978-3-030-75142-5_10"
+    },
+    {
+      "category": "conference",
+      "type_label": "Conference Presentation",
+      "year": "2026",
+      "title": "Assessing faculty confidence in using generative AI to teach 21st-century skills",
+      "authors": "Sutedjo, A., Liu, S. P., & Chowdhury, M.",
+      "venue": "2026 American Educational Research Association (AERA) Annual Meeting, Los Angeles, CA.",
+      "doi": ""
+    },
+    {
+      "category": "conference",
+      "type_label": "Conference Presentation",
+      "year": "2025",
+      "title": "AI-assisted learning: Redesigning a clerkship translational research selective",
+      "authors": "Conover, G., & Sutedjo, A.",
+      "venue": "Southern Group on Educational Affairs (SGEA) 2025 Annual Conference, Miami, FL.",
+      "doi": ""
+    },
+    {
+      "category": "conference",
+      "type_label": "Conference Presentation",
+      "year": "2024",
+      "title": "Using virtual reality to facilitate comprehension of health information: A meta-analysis",
+      "authors": "Li, Y., Kim, M., & Sutedjo, A.",
+      "venue": "2024 AECT International Convention, Kansas City, MO.",
+      "doi": ""
+    }
+  ],
+  "courses": [
+    {
+      "code": "LDTC 621",
+      "title": "Graphic Communication and Interface Design",
+      "terms": "Spring 2024, Spring 2025",
+      "description": "Graduate studio course examining visual design principles, UI/UX prototyping (Figma, Adobe XD), cognitive load theory, and digital accessibility standards."
+    },
+    {
+      "code": "LDTC 642",
+      "title": "Designing for Mobile Learning",
+      "terms": "Summer 2025",
+      "description": "Graduate seminar exploring mobile learning architectures, responsive instructional design, situated learning, and iterative mobile prototyping."
+    }
+  ],
+  "service": {
+    "journals": [
+      "Journal of Educational Technology Development and Exchange (JETDE)",
+      "AI Enhanced Learning (AIEL) — Association for the Advancement of Computing in Education (AACE)",
+      "Journal of Online Learning Research (JOLR) — AACE",
+      "Discover Education — Springer Nature",
+      "Frontiers in Artificial Intelligence — Frontiers",
+      "Education Sciences — MDPI"
+    ],
+    "conferences": [
+      "Association for Educational Communications and Technology (AECT) Annual Conference",
+      "American Educational Research Association (AERA) Annual Conference",
+      "EDUCAUSE Annual Conference",
+      "Institute of Data Sciences Proposal Review"
+    ],
+    "committees": [
+      "Center for Teaching Excellence Generative AI Committee — Committee Lead",
+      "Digital Learning Environment Advisory Committee (Enterprise Learning Tools Subgroup) — Committee Lead",
+      "Center for Teaching Excellence Vision Committee — Member",
+      "First-Year Student Experience (Hullabaloo U) Mental Health and Wellness Committee — Member"
+    ]
+  }
+}

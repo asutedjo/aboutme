@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research–Teaching Nexus — Academic Portfolio of Dr. Armanto Sutedjo">
+  <title>Research–Teaching Nexus | Dr. Armanto Sutedjo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <aside class="a11y-bar" aria-label="Accessibility preferences">
+    <div class="container a11y-container">
+      <span style="font-weight:600; color:var(--text-light);">Accessibility & Display Controls:</span>
+      <div class="a11y-controls">
+        <button type="button" class="a11y-btn" id="toggle-theme" aria-pressed="false">🌓 Dark Mode</button>
+        <button type="button" class="a11y-btn" id="toggle-contrast" aria-pressed="false">👁️ High Contrast</button>
+        <button type="button" class="a11y-btn" id="toggle-font" aria-pressed="false">🔤 Atkinson Hyperlegible</button>
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <span class="brand-name">Dr. Armanto Sutedjo</span>
+        <span class="brand-title">Learning, Design & Technology • AI in Education</span>
+      </a>
+      <nav aria-label="Primary portfolio navigation">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="nexus.html" aria-current="page">Research–Teaching Nexus</a></li>
+          <li><a href="research.html">Research & Grants</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="service.html">Service & Leadership</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" role="main">
+    <section class="card" aria-labelledby="nexus-page-heading">
+      <h1 id="nexus-page-heading" style="font-size:2rem; margin-bottom:0.5rem;">Interactive Research–Teaching–Practice Nexus</h1>
+      <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+        Click or press <code>Enter</code> on any empirical research pillar (left) or classroom practice node (right) to inspect how my scholarship and teaching reinforce one another through Design-Based Research.
+      </p>
+
+      <div class="diagram-grid" role="region" aria-label="Interactive Research and Teaching Alignment Diagram">
+        <div class="diagram-col" role="group" aria-label="Empirical Research Pillars">
+          <h2 style="font-size:0.9rem; text-transform:uppercase; color:var(--text-light);">Empirical Research Agenda</h2>
+          <button type="button" class="diagram-node" id="node-r1" data-dim="r1" aria-selected="true">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase;">Research Pillar I</span>
+            <h3>Institutional Readiness &amp; AI-TPACK</h3>
+            <p>Cross-institutional faculty readiness studies, AI-TPACK confidence, and TAM2 student adoption.</p>
+          </button>
+          <button type="button" class="diagram-node" id="node-r2" data-dim="r2" aria-selected="false">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase;">Research Pillar II</span>
+            <h3>AI-Simulated Classrooms (ArguMath)</h3>
+            <p>Multi-agent LLM simulations for teacher preparation and clinical veterinary education.</p>
+          </button>
+          <button type="button" class="diagram-node" id="node-r3" data-dim="r3" aria-selected="false">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase;">Research Pillar III</span>
+            <h3>Self-Regulation &amp; Learning Analytics</h3>
+            <p>Investigating how Google Gemini + Canvas integration shapes learner metacognition.</p>
+          </button>
+        </div>
+
+        <div aria-hidden="true">
+          <div class="center-hub">
+            Design-Based Research
+            <span style="font-size:0.65rem; font-weight:400; margin-top:0.2rem;">Iterative Translation</span>
+          </div>
+        </div>
+
+        <div class="diagram-col" role="group" aria-label="Pedagogical Studio Translation">
+          <h2 style="font-size:0.9rem; text-transform:uppercase; color:var(--text-light);">Studio &amp; Classroom Practice</h2>
+          <button type="button" class="diagram-node" id="node-t1" data-dim="r1" aria-selected="true">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase;">Teaching Outcome I</span>
+            <h3>Critical Tool Selection &amp; AI Ethics</h3>
+            <p>Testing generative outputs against evidence, auditing bias, and maintaining human oversight.</p>
+          </button>
+          <button type="button" class="diagram-node" id="node-t2" data-dim="r2" aria-selected="false">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase;">Teaching Outcome II</span>
+            <h3>Backward Design &amp; Studio Prototyping</h3>
+            <p>Applied graduate studios (LDTC 621 &amp; LDTC 642) centered on iterative prototyping and peer critique.</p>
+          </button>
+          <button type="button" class="diagram-node" id="node-t3" data-dim="r3" aria-selected="false">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase;">Teaching Outcome III</span>
+            <h3>Adaptable Citizen-Professionals</h3>
+            <p>Building transferable professional judgment across disciplines and lifelong career transitions.</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="nexus-inspector" role="region" aria-live="polite">
+        <h3 id="nexus-title" style="color:var(--primary); font-size:1.2rem;">Pillar 1: Institutional Readiness, AI-TPACK &amp; Ethical AI Adoption</h3>
+        <div class="evidence-grid">
+          <div>
+            <h4 style="font-size:0.8rem; text-transform:uppercase; color:var(--text-light);">Theoretical &amp; Empirical Anchor</h4>
+            <p id="nexus-theory" style="font-size:0.95rem; margin-top:0.25rem;">Cross-institutional policy analysis (Studies in Technology Enhanced Learning, 2025), AI-TPACK (Frontiers in Education, 2026), and TAM2 student perception models.</p>
+          </div>
+          <div>
+            <h4 style="font-size:0.8rem; text-transform:uppercase; color:var(--text-light);">Classroom Operationalization</h4>
+            <p id="nexus-pedagogy" style="font-size:0.95rem; margin-top:0.25rem;">Learners evaluate where generative and predictive systems add value, test AI outputs against empirical evidence, and uphold human oversight.</p>
+          </div>
+          <div>
+            <h4 style="font-size:0.8rem; text-transform:uppercase; color:var(--text-light);">Verifiable Dossier Evidence</h4>
+            <p id="nexus-evidence" style="font-size:0.95rem; margin-top:0.25rem;">Published journal studies, IRB-approved TAM2 survey research, and campus-wide AI Playground workshops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <strong>Armanto Sutedjo, Ph.D.</strong> — Academic Portfolio<br>
+        <span>College Station, TX • <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></span>
+      </div>
+      <div>
+        <span>Content powered by plain-text Markdown (<code>content/*.md</code>) &amp; JSON (<code>content/portfolio-data.json</code>)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
