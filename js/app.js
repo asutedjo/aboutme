@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Plain-Text Content Loader (.md & .json), Multi-Tab Teaching Builder & A11y
+   Academic Portfolio Content Loader, Multi-Tab Teaching System & A11y
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   initAccessibilityPreferences();
@@ -89,7 +89,7 @@ function initAccessibilityPreferences() {
   }
 }
 
-/* 2. Lightweight Markdown-to-HTML Parser for standard content/*.md files */
+/* 2. Lightweight Markdown-to-HTML Parser */
 function parseSimpleMarkdown(mdText) {
   const lines = mdText.split(/\r?\n/);
   let html = '';
@@ -133,7 +133,7 @@ async function loadMarkdownContent() {
         el.innerHTML = parseSimpleMarkdown(text);
       }
     } catch (err) {
-      console.warn('Fallback text remained in place for:', src);
+      console.warn('Using embedded fallback content for:', src);
     }
   }
 }
@@ -144,76 +144,30 @@ async function initTeachingTabsSystem() {
   const panelsWrapper = document.getElementById('teaching-panels-wrapper');
   if (!tablistEl || !panelsWrapper) return;
 
-  const editorTextarea = document.getElementById('teaching-md-editor');
-  const toggleEditorBtn = document.getElementById('toggle-teaching-editor');
-  const editorDrawer = document.getElementById('teaching-editor-drawer');
-  const applyEditorBtn = document.getElementById('apply-teaching-md');
-  const downloadMdBtn = document.getElementById('download-teaching-md');
   const showAllBtn = document.getElementById('toggle-all-teaching-tabs');
 
-  // Wire up static fallback tabs first so page works even offline without a web server
+  // Bind embedded fallback tabs immediately
   bindAccessibleTabs(tablistEl, panelsWrapper);
 
-  // Try fetching content/teaching.md dynamically
+  // Fetch content/teaching.md dynamically when hosted on GitHub Pages
   try {
     const res = await fetch('content/teaching.md');
     if (res.ok) {
       const mdText = await res.text();
-      if (editorTextarea) editorTextarea.value = mdText;
       buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper);
     }
   } catch (err) {
     console.warn('Using embedded fallback tabs for teaching.html');
   }
 
-  // Toggle Plain-Text Update Container
-  if (toggleEditorBtn && editorDrawer) {
-    toggleEditorBtn.addEventListener('click', () => {
-      const isHidden = editorDrawer.hasAttribute('hidden');
-      if (isHidden) {
-        editorDrawer.removeAttribute('hidden');
-        toggleEditorBtn.setAttribute('aria-expanded', 'true');
-        announce('Plain-text teaching statement editor opened');
-      } else {
-        editorDrawer.setAttribute('hidden', '');
-        toggleEditorBtn.setAttribute('aria-expanded', 'false');
-        announce('Plain-text editor closed');
-      }
-    });
-  }
-
-  // Live Preview Updated Plain-Text Markdown
-  if (applyEditorBtn && editorTextarea) {
-    applyEditorBtn.addEventListener('click', () => {
-      buildTabsFromMarkdown(editorTextarea.value, tablistEl, panelsWrapper);
-      announce('Teaching tabs updated from plain-text container');
-    });
-  }
-
-  // Download updated teaching.md file for GitHub repo
-  if (downloadMdBtn && editorTextarea) {
-    downloadMdBtn.addEventListener('click', () => {
-      const blob = new Blob([editorTextarea.value], { type: 'text/markdown;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'teaching.md';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      announce('Downloaded updated teaching.md file');
-    });
-  }
-
-  // Print / Read All Sections at Once Toggle
+  // Toggle "Read All Tabs on One Page"
   if (showAllBtn) {
     showAllBtn.addEventListener('click', () => {
       const isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
       const allPanels = panelsWrapper.querySelectorAll('.tab-panel');
       if (isExpanded) {
         showAllBtn.setAttribute('aria-pressed', 'false');
-        showAllBtn.textContent = '📖 Read All Tabs on One Page';
+        showAllBtn.textContent = '📖 Read Full Statement on One Page';
         const selectedTab = tablistEl.querySelector('[aria-selected="true"]');
         const activeId = selectedTab ? selectedTab.getAttribute('aria-controls') : (allPanels[0] && allPanels[0].id);
         allPanels.forEach(p => {
@@ -225,7 +179,7 @@ async function initTeachingTabsSystem() {
             p.setAttribute('hidden', '');
           }
         });
-        announce('Switched to single tab view');
+        announce('Switched to tabbed view');
       } else {
         showAllBtn.setAttribute('aria-pressed', 'true');
         showAllBtn.textContent = '🗂️ Return to Tabbed View';
@@ -240,12 +194,10 @@ async function initTeachingTabsSystem() {
 }
 
 function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
-  // Preserve the final "Courses Taught" panel (#panel-courses)
   const coursesPanel = document.getElementById('panel-courses');
   const lines = mdText.split(/\r?\n/);
 
   let pageTitle = 'Teaching Philosophy & Graduate Instruction';
-  let pageIntro = '';
   const sections = [];
   let currentSection = null;
 
@@ -262,8 +214,6 @@ function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
     } else {
       if (currentSection) {
         currentSection.bodyLines.push(line);
-      } else if (trimmed) {
-        pageIntro += `<p style="color:var(--text-muted); margin-bottom:0.75rem;">${trimmed}</p>`;
       }
     }
   });
@@ -274,7 +224,7 @@ function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
 
   if (!sections.length) return;
 
-  // Rebuild Tab Buttons
+  // Build Tab Buttons matching the exact ## titles + final "Courses Taught" tab
   let tabsHtml = '';
   sections.forEach((sec, idx) => {
     const isSelected = idx === 0 ? 'true' : 'false';
@@ -290,20 +240,18 @@ function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
     `;
   });
 
-  // Always append the final tab for "6. Courses Taught" from resume
-  const coursesTabNum = sections.length + 1;
   tabsHtml += `
     <button type="button" role="tab" class="tab-btn"
       id="tab-courses"
       aria-selected="false"
       aria-controls="panel-courses"
       tabindex="-1">
-      ${coursesTabNum}. Courses Taught
+      Courses Taught
     </button>
   `;
   tablistEl.innerHTML = tabsHtml;
 
-  // Rebuild Tab Panels for each philosophy section
+  // Build Tab Panels
   panelsWrapper.innerHTML = '';
   sections.forEach((sec, idx) => {
     const panelDiv = document.createElement('section');
@@ -316,10 +264,10 @@ function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
 
     const bodyHtml = parseSimpleMarkdown(sec.bodyLines.join('\n'));
     const prevBtn = idx > 0
-      ? `<button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-sec-${idx}">← Previous Section</button>`
+      ? `<button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-sec-${idx}">← Previous: ${sections[idx - 1].title}</button>`
       : `<span></span>`;
     const nextTarget = idx < sections.length - 1 ? `tab-sec-${idx + 2}` : 'tab-courses';
-    const nextLabel = idx < sections.length - 1 ? `Next: ${sections[idx + 1].title} →` : `Next: ${coursesTabNum}. Courses Taught →`;
+    const nextLabel = idx < sections.length - 1 ? `Next: ${sections[idx + 1].title} →` : `Next: Courses Taught →`;
 
     panelDiv.innerHTML = `
       <h2>${sec.title}</h2>
@@ -332,13 +280,14 @@ function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
     panelsWrapper.appendChild(panelDiv);
   });
 
-  // Re-append the Courses Taught panel at the end
+  // Append Courses Taught panel at the end
   if (coursesPanel) {
     coursesPanel.classList.remove('active');
     coursesPanel.setAttribute('hidden', '');
     const prevBtnInCourses = coursesPanel.querySelector('.tab-step-btn');
     if (prevBtnInCourses && sections.length) {
       prevBtnInCourses.setAttribute('data-goto-tab', `tab-sec-${sections.length}`);
+      prevBtnInCourses.textContent = `← Previous: ${sections[sections.length - 1].title}`;
     }
     panelsWrapper.appendChild(coursesPanel);
   }
@@ -374,7 +323,7 @@ function bindAccessibleTabs(tablistEl, panelsWrapper) {
     const showAllBtn = document.getElementById('toggle-all-teaching-tabs');
     if (showAllBtn) {
       showAllBtn.setAttribute('aria-pressed', 'false');
-      showAllBtn.textContent = '📖 Read All Tabs on One Page';
+      showAllBtn.textContent = '📖 Read Full Statement on One Page';
     }
 
     announce(`Selected tab: ${tab.textContent.trim()}`);
@@ -395,7 +344,6 @@ function bindAccessibleTabs(tablistEl, panelsWrapper) {
     });
   });
 
-  // Next / Previous Step Buttons inside panels
   panelsWrapper.querySelectorAll('.tab-step-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const targetTabId = btn.getAttribute('data-goto-tab');
@@ -470,7 +418,7 @@ async function loadPortfolioData() {
       });
     }
 
-    // Courses List inside Tab 6 (on teaching.html)
+    // Courses List inside "Courses Taught" tab (on teaching.html)
     const coursesContainer = document.getElementById('courses-list');
     if (coursesContainer && data.courses) {
       coursesContainer.innerHTML = data.courses.map(c => `
@@ -479,24 +427,12 @@ async function loadPortfolioData() {
             <span style="font-family:var(--font-mono); font-size:0.9rem; font-weight:700; color:var(--accent);">
               ${c.code} • ${c.terms}
             </span>
-            <span class="badge">${c.level || 'Graduate Course'}</span>
+            <span class="badge">${c.level || 'Graduate Course Level'}</span>
           </div>
           <h3 style="font-size:1.2rem; color:var(--text-main); margin-bottom:0.4rem;">${c.title}</h3>
           <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:0.75rem;">${c.description}</p>
           ${c.tools ? `<p style="font-size:0.84rem; color:var(--text-light);"><strong>Core Technologies &amp; Frameworks:</strong> ${c.tools}</p>` : ''}
         </article>
-      `).join('');
-    }
-
-    // Graduate Instructional & Course Support Experience (on teaching.html Tab 6)
-    const supportContainer = document.getElementById('instructional-support-list');
-    if (supportContainer && data.instructional_support_courses) {
-      supportContainer.innerHTML = data.instructional_support_courses.map(item => `
-        <tr>
-          <td><strong>${item.period}</strong></td>
-          <td><strong>${item.role}</strong><br><span style="font-size:0.85rem; color:var(--text-light);">${item.unit}</span></td>
-          <td>${item.highlights}</td>
-        </tr>
       `).join('');
     }
 
@@ -531,8 +467,8 @@ function initNexusDiagram() {
       pair: 't2',
       title: 'Pillar 2: Multi-Agent Simulated Classrooms (ArguMath) & Game-Based Learning',
       theory: 'Design-Based Research (DBR), human-computer interaction, and naturalistic inquiry in STEM digital game-based learning (Springer, 2021).',
-      pedagogy: 'Backward design, iterative prototyping, and peer critique in graduate studios (LDTC 621 & LDTC 642) and veterinary clinical extraction.',
-      evidence: 'AIED 2026 ArguMath paper ($25k grant), Veterinary AI Tutor study, and graduate student studio portfolios.'
+      pedagogy: 'Backward design, iterative prototyping, and peer critique in graduate courses (LDTC 621 & LDTC 642) and veterinary clinical extraction.',
+      evidence: 'AIED 2026 ArguMath paper ($25k grant), Veterinary AI Tutor study, and graduate student design portfolios.'
     },
     'r3': {
       pair: 't3',
