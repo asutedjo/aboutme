@@ -721,3 +721,168 @@ function bindResearchAccessibleTabs(tablistEl, panelsWrapper) {
     });
   });
 }
+
+
+/* ==========================================================================
+   Dynamic Multi-Tab Builder for Publications (publications.html)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  initPublicationsTabsSystem();
+});
+
+async function initPublicationsTabsSystem() {
+  const tablistEl = document.getElementById('pubs-tablist');
+  const panelsWrapper = document.getElementById('pubs-panels-wrapper');
+  if (!tablistEl || !panelsWrapper) return;
+
+  const showAllBtn = document.getElementById('toggle-all-pubs-tabs');
+
+  bindPubsAccessibleTabs(tablistEl, panelsWrapper);
+
+  try {
+    const res = await fetch('content/portfolio-data.json');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.publications) {
+        populatePubsTabs(data.publications);
+      }
+    }
+  } catch (err) {
+    console.warn('Could not load publications dynamically:', err);
+  }
+
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+      const isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
+      const allPanels = panelsWrapper.querySelectorAll('.tab-panel');
+      if (isExpanded) {
+        showAllBtn.setAttribute('aria-pressed', 'false');
+        showAllBtn.textContent = '📖 Read All Scholarship on One Page';
+        const selectedTab = tablistEl.querySelector('[aria-selected="true"]');
+        const activeId = selectedTab ? selectedTab.getAttribute('aria-controls') : (allPanels[0] && allPanels[0].id);
+        allPanels.forEach(p => {
+          if (p.id === activeId) {
+            p.classList.add('active');
+            p.removeAttribute('hidden');
+          } else {
+            p.classList.remove('active');
+            p.setAttribute('hidden', '');
+          }
+        });
+        announce('Switched to tabbed view');
+      } else {
+        showAllBtn.setAttribute('aria-pressed', 'true');
+        showAllBtn.textContent = '🗂️ Return to Tabbed View';
+        allPanels.forEach(p => {
+          p.classList.add('active');
+          p.removeAttribute('hidden');
+        });
+        announce('Showing all publications on one page');
+      }
+    });
+  }
+}
+
+function renderPubCard(p) {
+  return `
+    <article class="pub-item" style="margin-bottom:1.25rem;">
+      <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--accent);">
+        ${p.type_label} • ${p.year}
+      </div>
+      <h3 style="font-size:1.08rem; margin:0.3rem 0; color:var(--text-main);">${p.title}</h3>
+      <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:0.25rem;">${p.authors}</p>
+      <p style="font-size:0.9rem; font-style:italic; color:var(--text-light);">${p.venue}</p>
+      ${p.doi ? `<p style="margin-top:0.5rem;"><a href="${p.doi}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:600; font-size:0.88rem;">Access Publication / DOI ↗</a></p>` : ''}
+    </article>
+  `;
+}
+
+function populatePubsTabs(pubs) {
+  const journalList = document.getElementById('list-pub-journal');
+  const confList = document.getElementById('list-pub-conference');
+  const reviewList = document.getElementById('list-pub-review');
+  const allList = document.getElementById('list-pub-all');
+
+  // Journals & Book chapters (category === 'journal')
+  const journals = pubs.filter(p => p.category === 'journal');
+  if (journalList) {
+    journalList.innerHTML = journals.length ? journals.map(renderPubCard).join('') : '<p>No items found.</p>';
+  }
+
+  // Conferences & preprints (category === 'conference')
+  const conferences = pubs.filter(p => p.category === 'conference');
+  if (confList) {
+    confList.innerHTML = conferences.length ? conferences.map(renderPubCard).join('') : '<p>No items found.</p>';
+  }
+
+  // Under review (category === 'review')
+  const reviews = pubs.filter(p => p.category === 'review');
+  if (reviewList) {
+    reviewList.innerHTML = reviews.length ? reviews.map(renderPubCard).join('') : '<p>No items found.</p>';
+  }
+
+  // All scholarship
+  if (allList) {
+    allList.innerHTML = pubs.length ? pubs.map(renderPubCard).join('') : '<p>No items found.</p>';
+  }
+}
+
+function bindPubsAccessibleTabs(tablistEl, panelsWrapper) {
+  const tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(panelsWrapper.querySelectorAll('[role="tabpanel"]'));
+
+  function activateTab(tab, setFocus = true) {
+    tabs.forEach(t => {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('hidden', '');
+    });
+
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    if (setFocus) tab.focus();
+
+    const targetId = tab.getAttribute('aria-controls');
+    const targetPanel = document.getElementById(targetId);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      targetPanel.removeAttribute('hidden');
+    }
+
+    const showAllBtn = document.getElementById('toggle-all-pubs-tabs');
+    if (showAllBtn) {
+      showAllBtn.setAttribute('aria-pressed', 'false');
+      showAllBtn.textContent = '📖 Read All Scholarship on One Page';
+    }
+
+    announce(`Selected tab: ${tab.textContent.trim()}`);
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab, false));
+    tab.addEventListener('keydown', e => {
+      let newIndex = null;
+      if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') newIndex = 0;
+      if (e.key === 'End') newIndex = tabs.length - 1;
+      if (newIndex !== null) {
+        e.preventDefault();
+        activateTab(tabs[newIndex], true);
+      }
+    });
+  });
+
+  panelsWrapper.querySelectorAll('.tab-step-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTabId = btn.getAttribute('data-goto-tab');
+      const targetTab = document.getElementById(targetTabId);
+      if (targetTab) {
+        activateTab(targetTab, true);
+      }
+    });
+  });
+}

@@ -530,3 +530,19 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Publications 4-Column Tablist Grid */
+#pubs-tablist {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+@media (max-width: 900px) {
+  #pubs-tablist {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 500px) {
+  #pubs-tablist {
+    grid-template-columns: 1fr !important;
+  }
+}

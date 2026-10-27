@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Publications — Academic Portfolio of Dr. Armanto Sutedjo">
+  <meta name="description" content="Publications & Conference Scholarship — Academic Portfolio of Dr. Armanto Sutedjo">
   <title>Publications | Dr. Armanto Sutedjo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,29 +45,92 @@
   </header>
 
   <main id="main-content" class="container" role="main">
-    <section class="card" aria-labelledby="pubs-page-heading">
-      <h1 id="pubs-page-heading" style="font-size:2rem; margin-bottom:0.5rem;">Publications &amp; Conference Scholarship</h1>
-      <p style="color:var(--text-muted); margin-bottom:1.5rem;">
-        Peer-reviewed journal articles, book chapters, international conference proceedings, and manuscripts under review in artificial intelligence in education, learning analytics, and digital game-based learning.
+    <div class="card">
+      <div class="tabs-header-bar">
+        <div>
+          <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent);">Scholarly Output</span>
+          <h1 id="pubs-main-heading" style="font-size:2rem; font-weight:800; color:var(--text-main); margin-top:0.2rem;">Publications &amp; Conference Scholarship</h1>
+        </div>
+        <div>
+          <button type="button" class="btn btn-secondary" id="toggle-all-pubs-tabs" aria-pressed="false" style="padding:0.5rem 0.9rem; font-size:0.85rem;">
+            📖 Read All Scholarship on One Page
+          </button>
+        </div>
+      </div>
+
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.25rem;">
+        Select any tab below (or use the <code>Left</code> and <code>Right</code> arrow keys) to explore peer-reviewed journal articles, book chapters, conference presentations, and manuscripts under review.
       </p>
 
-      <div class="filter-bar" role="toolbar" aria-label="Filter publications">
-        <button type="button" class="filter-btn active" data-filter="all">All Scholarship</button>
-        <button type="button" class="filter-btn" data-filter="journal">Journal Articles &amp; Book Chapters</button>
-        <button type="button" class="filter-btn" data-filter="conference">Conferences &amp; Proceedings</button>
-        <button type="button" class="filter-btn" data-filter="review">Manuscripts Under Review</button>
+      <!-- Accessible ARIA Tablist (4 tabs fitting the 4 categories) -->
+      <div class="tablist-nav" id="pubs-tablist" role="tablist" aria-label="Publications Categories">
+        <button type="button" role="tab" class="tab-btn" id="tab-pub-journal" aria-selected="true" aria-controls="panel-pub-journal" tabindex="0">
+          Journal Articles &amp; Chapters
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-pub-conference" aria-selected="false" aria-controls="panel-pub-conference" tabindex="-1">
+          Conference Papers &amp; Talks
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-pub-review" aria-selected="false" aria-controls="panel-pub-review" tabindex="-1">
+          Manuscripts Under Review
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-pub-all" aria-selected="false" aria-controls="panel-pub-all" tabindex="-1">
+          All Scholarship
+        </button>
       </div>
 
-      <div id="publications-list">
-        <article class="pub-item">
-          <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--accent);">Journal Article • 2026</div>
-          <h3 style="font-size:1.08rem; margin:0.3rem 0;">Assessing faculty self-perceived knowledge in using generative AI to teach 21st-century skills</h3>
-          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:0.25rem;">Sutedjo, A., Chowdhury, M., &amp; Liu, S. P.</p>
-          <p style="font-size:0.9rem; font-style:italic; color:var(--text-light);">Frontiers in Education, 11, Article 1913310.</p>
-          <p style="margin-top:0.5rem;"><a href="https://doi.org/10.3389/feduc.2026.1913310" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:600; font-size:0.88rem;">Access Publication / DOI ↗</a></p>
-        </article>
+      <!-- Tab Panels Container -->
+      <div id="pubs-panels-wrapper">
+
+        <!-- Tab 1: Journal Articles & Book Chapters -->
+        <section id="panel-pub-journal" role="tabpanel" aria-labelledby="tab-pub-journal" tabindex="0" class="tab-panel active markdown-body">
+          <h2>Peer-Reviewed Journal Articles &amp; Book Chapters</h2>
+          <div id="list-pub-journal">
+            <p>Loading journal articles...</p>
+          </div>
+          <div class="tab-footer-nav">
+            <span></span>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-pub-conference">Next: Conference Papers &amp; Talks →</button>
+          </div>
+        </section>
+
+        <!-- Tab 2: Conference Papers & Talks -->
+        <section id="panel-pub-conference" role="tabpanel" aria-labelledby="tab-pub-conference" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Conference Papers, Preprints &amp; Presentations</h2>
+          <div id="list-pub-conference">
+            <p>Loading conference papers...</p>
+          </div>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-pub-journal">← Previous: Journal Articles</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-pub-review">Next: Manuscripts Under Review →</button>
+          </div>
+        </section>
+
+        <!-- Tab 3: Manuscripts Under Review -->
+        <section id="panel-pub-review" role="tabpanel" aria-labelledby="tab-pub-review" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Manuscripts Under Review</h2>
+          <div id="list-pub-review">
+            <p>Loading manuscripts under review...</p>
+          </div>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-pub-conference">← Previous: Conference Papers</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-pub-all">Next: All Scholarship →</button>
+          </div>
+        </section>
+
+        <!-- Tab 4: All Scholarship -->
+        <section id="panel-pub-all" role="tabpanel" aria-labelledby="tab-pub-all" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Complete Scholarly Output</h2>
+          <div id="list-pub-all">
+            <p>Loading complete list...</p>
+          </div>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-pub-review">← Previous: Manuscripts Under Review</button>
+            <a href="teaching.html" class="btn btn-primary">Explore Teaching →</a>
+          </div>
+        </section>
+
       </div>
-    </section>
+    </div>
   </main>
 
   <footer role="contentinfo">
