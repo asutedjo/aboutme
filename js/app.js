@@ -1,10 +1,11 @@
 /* ==========================================================================
-   Plain-Text Content Loader (.md & .json) + Accessibility Preferences
+   Plain-Text Content Loader (.md & .json), Multi-Tab Teaching Builder & A11y
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   initAccessibilityPreferences();
   loadMarkdownContent();
   loadPortfolioData();
+  initTeachingTabsSystem();
   initNexusDiagram();
 });
 
@@ -88,7 +89,7 @@ function initAccessibilityPreferences() {
   }
 }
 
-/* 2. Lightweight Markdown-to-HTML Parser for content/*.md files */
+/* 2. Lightweight Markdown-to-HTML Parser for standard content/*.md files */
 function parseSimpleMarkdown(mdText) {
   const lines = mdText.split(/\r?\n/);
   let html = '';
@@ -137,7 +138,276 @@ async function loadMarkdownContent() {
   }
 }
 
-/* 3. Dynamic JSON Loader for Grants, Publications, Courses, Education, Service */
+/* 3. Dynamic Multi-Tab Builder for Teaching Philosophy (teaching.html) */
+async function initTeachingTabsSystem() {
+  const tablistEl = document.getElementById('teaching-tablist');
+  const panelsWrapper = document.getElementById('teaching-panels-wrapper');
+  if (!tablistEl || !panelsWrapper) return;
+
+  const editorTextarea = document.getElementById('teaching-md-editor');
+  const toggleEditorBtn = document.getElementById('toggle-teaching-editor');
+  const editorDrawer = document.getElementById('teaching-editor-drawer');
+  const applyEditorBtn = document.getElementById('apply-teaching-md');
+  const downloadMdBtn = document.getElementById('download-teaching-md');
+  const showAllBtn = document.getElementById('toggle-all-teaching-tabs');
+
+  // Wire up static fallback tabs first so page works even offline without a web server
+  bindAccessibleTabs(tablistEl, panelsWrapper);
+
+  // Try fetching content/teaching.md dynamically
+  try {
+    const res = await fetch('content/teaching.md');
+    if (res.ok) {
+      const mdText = await res.text();
+      if (editorTextarea) editorTextarea.value = mdText;
+      buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper);
+    }
+  } catch (err) {
+    console.warn('Using embedded fallback tabs for teaching.html');
+  }
+
+  // Toggle Plain-Text Update Container
+  if (toggleEditorBtn && editorDrawer) {
+    toggleEditorBtn.addEventListener('click', () => {
+      const isHidden = editorDrawer.hasAttribute('hidden');
+      if (isHidden) {
+        editorDrawer.removeAttribute('hidden');
+        toggleEditorBtn.setAttribute('aria-expanded', 'true');
+        announce('Plain-text teaching statement editor opened');
+      } else {
+        editorDrawer.setAttribute('hidden', '');
+        toggleEditorBtn.setAttribute('aria-expanded', 'false');
+        announce('Plain-text editor closed');
+      }
+    });
+  }
+
+  // Live Preview Updated Plain-Text Markdown
+  if (applyEditorBtn && editorTextarea) {
+    applyEditorBtn.addEventListener('click', () => {
+      buildTabsFromMarkdown(editorTextarea.value, tablistEl, panelsWrapper);
+      announce('Teaching tabs updated from plain-text container');
+    });
+  }
+
+  // Download updated teaching.md file for GitHub repo
+  if (downloadMdBtn && editorTextarea) {
+    downloadMdBtn.addEventListener('click', () => {
+      const blob = new Blob([editorTextarea.value], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'teaching.md';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      announce('Downloaded updated teaching.md file');
+    });
+  }
+
+  // Print / Read All Sections at Once Toggle
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+      const isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
+      const allPanels = panelsWrapper.querySelectorAll('.tab-panel');
+      if (isExpanded) {
+        showAllBtn.setAttribute('aria-pressed', 'false');
+        showAllBtn.textContent = '📖 Read All Tabs on One Page';
+        const selectedTab = tablistEl.querySelector('[aria-selected="true"]');
+        const activeId = selectedTab ? selectedTab.getAttribute('aria-controls') : (allPanels[0] && allPanels[0].id);
+        allPanels.forEach(p => {
+          if (p.id === activeId) {
+            p.classList.add('active');
+            p.removeAttribute('hidden');
+          } else {
+            p.classList.remove('active');
+            p.setAttribute('hidden', '');
+          }
+        });
+        announce('Switched to single tab view');
+      } else {
+        showAllBtn.setAttribute('aria-pressed', 'true');
+        showAllBtn.textContent = '🗂️ Return to Tabbed View';
+        allPanels.forEach(p => {
+          p.classList.add('active');
+          p.removeAttribute('hidden');
+        });
+        announce('Showing all teaching philosophy sections and courses on one page');
+      }
+    });
+  }
+}
+
+function buildTabsFromMarkdown(mdText, tablistEl, panelsWrapper) {
+  // Preserve the final "Courses Taught" panel (#panel-courses)
+  const coursesPanel = document.getElementById('panel-courses');
+  const lines = mdText.split(/\r?\n/);
+
+  let pageTitle = 'Teaching Philosophy & Graduate Instruction';
+  let pageIntro = '';
+  const sections = [];
+  let currentSection = null;
+
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('# ')) {
+      pageTitle = trimmed.slice(2).trim();
+    } else if (trimmed.startsWith('## ')) {
+      if (currentSection) sections.push(currentSection);
+      currentSection = {
+        title: trimmed.slice(3).trim(),
+        bodyLines: []
+      };
+    } else {
+      if (currentSection) {
+        currentSection.bodyLines.push(line);
+      } else if (trimmed) {
+        pageIntro += `<p style="color:var(--text-muted); margin-bottom:0.75rem;">${trimmed}</p>`;
+      }
+    }
+  });
+  if (currentSection) sections.push(currentSection);
+
+  const headingEl = document.getElementById('teaching-main-heading');
+  if (headingEl) headingEl.textContent = pageTitle;
+
+  if (!sections.length) return;
+
+  // Rebuild Tab Buttons
+  let tabsHtml = '';
+  sections.forEach((sec, idx) => {
+    const isSelected = idx === 0 ? 'true' : 'false';
+    const tabIndex = idx === 0 ? '0' : '-1';
+    tabsHtml += `
+      <button type="button" role="tab" class="tab-btn"
+        id="tab-sec-${idx + 1}"
+        aria-selected="${isSelected}"
+        aria-controls="panel-sec-${idx + 1}"
+        tabindex="${tabIndex}">
+        ${sec.title}
+      </button>
+    `;
+  });
+
+  // Always append the final tab for "6. Courses Taught" from resume
+  const coursesTabNum = sections.length + 1;
+  tabsHtml += `
+    <button type="button" role="tab" class="tab-btn"
+      id="tab-courses"
+      aria-selected="false"
+      aria-controls="panel-courses"
+      tabindex="-1">
+      ${coursesTabNum}. Courses Taught
+    </button>
+  `;
+  tablistEl.innerHTML = tabsHtml;
+
+  // Rebuild Tab Panels for each philosophy section
+  panelsWrapper.innerHTML = '';
+  sections.forEach((sec, idx) => {
+    const panelDiv = document.createElement('section');
+    panelDiv.id = `panel-sec-${idx + 1}`;
+    panelDiv.setAttribute('role', 'tabpanel');
+    panelDiv.setAttribute('aria-labelledby', `tab-sec-${idx + 1}`);
+    panelDiv.setAttribute('tabindex', '0');
+    panelDiv.className = idx === 0 ? 'tab-panel active markdown-body' : 'tab-panel markdown-body';
+    if (idx !== 0) panelDiv.setAttribute('hidden', '');
+
+    const bodyHtml = parseSimpleMarkdown(sec.bodyLines.join('\n'));
+    const prevBtn = idx > 0
+      ? `<button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-sec-${idx}">← Previous Section</button>`
+      : `<span></span>`;
+    const nextTarget = idx < sections.length - 1 ? `tab-sec-${idx + 2}` : 'tab-courses';
+    const nextLabel = idx < sections.length - 1 ? `Next: ${sections[idx + 1].title} →` : `Next: ${coursesTabNum}. Courses Taught →`;
+
+    panelDiv.innerHTML = `
+      <h2>${sec.title}</h2>
+      ${bodyHtml}
+      <div class="tab-footer-nav">
+        ${prevBtn}
+        <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="${nextTarget}">${nextLabel}</button>
+      </div>
+    `;
+    panelsWrapper.appendChild(panelDiv);
+  });
+
+  // Re-append the Courses Taught panel at the end
+  if (coursesPanel) {
+    coursesPanel.classList.remove('active');
+    coursesPanel.setAttribute('hidden', '');
+    const prevBtnInCourses = coursesPanel.querySelector('.tab-step-btn');
+    if (prevBtnInCourses && sections.length) {
+      prevBtnInCourses.setAttribute('data-goto-tab', `tab-sec-${sections.length}`);
+    }
+    panelsWrapper.appendChild(coursesPanel);
+  }
+
+  bindAccessibleTabs(tablistEl, panelsWrapper);
+}
+
+function bindAccessibleTabs(tablistEl, panelsWrapper) {
+  const tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(panelsWrapper.querySelectorAll('[role="tabpanel"]'));
+
+  function activateTab(tab, setFocus = true) {
+    tabs.forEach(t => {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('hidden', '');
+    });
+
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    if (setFocus) tab.focus();
+
+    const targetId = tab.getAttribute('aria-controls');
+    const targetPanel = document.getElementById(targetId);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      targetPanel.removeAttribute('hidden');
+    }
+
+    const showAllBtn = document.getElementById('toggle-all-teaching-tabs');
+    if (showAllBtn) {
+      showAllBtn.setAttribute('aria-pressed', 'false');
+      showAllBtn.textContent = '📖 Read All Tabs on One Page';
+    }
+
+    announce(`Selected tab: ${tab.textContent.trim()}`);
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab, false));
+    tab.addEventListener('keydown', e => {
+      let newIndex = null;
+      if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') newIndex = 0;
+      if (e.key === 'End') newIndex = tabs.length - 1;
+      if (newIndex !== null) {
+        e.preventDefault();
+        activateTab(tabs[newIndex], true);
+      }
+    });
+  });
+
+  // Next / Previous Step Buttons inside panels
+  panelsWrapper.querySelectorAll('.tab-step-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTabId = btn.getAttribute('data-goto-tab');
+      const targetTab = document.getElementById(targetTabId);
+      if (targetTab) {
+        activateTab(targetTab, true);
+      }
+    });
+  });
+}
+
+/* 4. Dynamic JSON Loader for Grants, Publications, Courses, Education, Service */
 async function loadPortfolioData() {
   try {
     const res = await fetch('content/portfolio-data.json');
@@ -200,17 +470,33 @@ async function loadPortfolioData() {
       });
     }
 
-    // Courses List (on teaching.html)
+    // Courses List inside Tab 6 (on teaching.html)
     const coursesContainer = document.getElementById('courses-list');
     if (coursesContainer && data.courses) {
       coursesContainer.innerHTML = data.courses.map(c => `
-        <div class="pub-item">
-          <div style="font-family:var(--font-mono); font-size:0.85rem; font-weight:700; color:var(--accent);">
-            ${c.code} (${c.terms})
+        <article class="course-card">
+          <div class="course-meta-row">
+            <span style="font-family:var(--font-mono); font-size:0.9rem; font-weight:700; color:var(--accent);">
+              ${c.code} • ${c.terms}
+            </span>
+            <span class="badge">${c.level || 'Graduate Course'}</span>
           </div>
-          <h3 style="font-size:1.1rem; margin:0.25rem 0;">${c.title}</h3>
-          <p style="font-size:0.95rem; color:var(--text-muted);">${c.description}</p>
-        </div>
+          <h3 style="font-size:1.2rem; color:var(--text-main); margin-bottom:0.4rem;">${c.title}</h3>
+          <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:0.75rem;">${c.description}</p>
+          ${c.tools ? `<p style="font-size:0.84rem; color:var(--text-light);"><strong>Core Technologies &amp; Frameworks:</strong> ${c.tools}</p>` : ''}
+        </article>
+      `).join('');
+    }
+
+    // Graduate Instructional & Course Support Experience (on teaching.html Tab 6)
+    const supportContainer = document.getElementById('instructional-support-list');
+    if (supportContainer && data.instructional_support_courses) {
+      supportContainer.innerHTML = data.instructional_support_courses.map(item => `
+        <tr>
+          <td><strong>${item.period}</strong></td>
+          <td><strong>${item.role}</strong><br><span style="font-size:0.85rem; color:var(--text-light);">${item.unit}</span></td>
+          <td>${item.highlights}</td>
+        </tr>
       `).join('');
     }
 
@@ -228,7 +514,7 @@ async function loadPortfolioData() {
   }
 }
 
-/* 4. Interactive Research-Teaching Nexus Logic (nexus.html) */
+/* 5. Interactive Research-Teaching Nexus Logic (nexus.html) */
 function initNexusDiagram() {
   const nodes = document.querySelectorAll('.diagram-node');
   if (!nodes.length) return;

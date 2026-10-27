@@ -201,14 +201,20 @@
     {
       "code": "LDTC 621",
       "title": "Graphic Communication and Interface Design",
+      "role": "Instructor",
       "terms": "Spring 2024, Spring 2025",
-      "description": "Graduate studio course examining visual design principles, UI/UX prototyping (Figma, Adobe XD), cognitive load theory, and digital accessibility standards."
+      "level": "Graduate Studio Course",
+      "tools": "Figma, Adobe XD, Visual Design Systems, WCAG Accessibility",
+      "description": "Applied graduate studio examining visual communication theory, user interface (UI) and user experience (UX) design, cognitive load principles, iterative prototyping, peer critique, and digital accessibility compliance."
     },
     {
       "code": "LDTC 642",
       "title": "Designing for Mobile Learning",
+      "role": "Instructor",
       "terms": "Summer 2025",
-      "description": "Graduate seminar exploring mobile learning architectures, responsive instructional design, situated learning, and iterative mobile prototyping."
+      "level": "Graduate Seminar & Studio",
+      "tools": "Mobile-First Prototyping, Articulate Storyline, Adobe Captivate",
+      "description": "Graduate design seminar focused on mobile learning architectures, situated and ubiquitous learning theory, backward design, iterative usability testing, and responsive instructional module authoring."
     }
   ],
   "service": {
@@ -232,5 +238,25 @@
       "Center for Teaching Excellence Vision Committee — Member",
       "First-Year Student Experience (Hullabaloo U) Mental Health and Wellness Committee — Member"
     ]
-  }
+  },
+  "instructional_support_courses": [
+    {
+      "period": "2017–2022",
+      "unit": "Learning, Design, and Technology (College of Education & Human Development)",
+      "role": "Graduate Teaching & Technical Assistant",
+      "highlights": "Supported graduate courses utilizing Adobe XD, Adobe Captivate, Articulate Storyline, and Camtasia; provided assignment feedback as requested by the instructor of record and guided traditional-to-online course migrations in Canvas."
+    },
+    {
+      "period": "2016–2017",
+      "unit": "Special Education, Educational Psychology (College of Education & Human Development)",
+      "role": "Graduate Instructional Assistant",
+      "highlights": "Built online learning modules in Canvas for a state-funded Board Certified Behavior Analyst (BCBA) preparation course and managed Moodle LMS online training delivery for parents in an Autism project."
+    },
+    {
+      "period": "2014–2016",
+      "unit": "Remote Learning and Outreach Education, College of Engineering",
+      "role": "Graduate Instructional Design Assistant",
+      "highlights": "Created General Engineering learning modules in Adobe Captivate, conducted internal Quality Matters (QM) course reviews for Subsea Engineering, and moderated synchronous hybrid Blackboard Collaborate sessions."
+    }
+  ]
 }
