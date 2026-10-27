@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic Portfolio of Dr. Armanto Sutedjo - Candidate for Tenure-Track Assistant Professor in Learning Design & Technology, AI in Education, and Learning Sciences.">
+  <title>Dr. Armanto Sutedjo | Academic Portfolio</title>
+
+  <!-- Google Fonts: Inter & Atkinson Hyperlegible for enhanced readability -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & ACCESSIBILITY TOKENS (WCAG 2.1 AAA Compliant)
+       ========================================================================== */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      
+      /* Light Theme (Default: High contrast ratio >= 7:1 for text) */
+      --bg-canvas: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --text-light: #475569;
+      --primary: #1e3a8a;       /* Deep Navy */
+      --primary-hover: #172554;
+      --accent: #0284c7;        /* Scholarly Cyan */
+      --accent-bg: #e0f2fe;
+      --border-color: #cbd5e1;
+      --focus-ring: #0284c7;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+
+      /* Diagram Connections */
+      --line-active: #0284c7;
+      --line-inactive: #94a3b8;
+    }
+
+    /* Dark Mode Theme */
+    [data-theme="dark"] {
+      --bg-canvas: #090d16;
+      --bg-card: #131b2e;
+      --bg-card-subtle: #1c2640;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-light: #94a3b8;
+      --primary: #60a5fa;
+      --primary-hover: #93c5fd;
+      --accent: #38bdf8;
+      --accent-bg: #0c4a6e;
+      --border-color: #334155;
+      --focus-ring: #38bdf8;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.6);
+      --line-active: #38bdf8;
+      --line-inactive: #475569;
+    }
+
+    /* Dyslexia-Friendly / High Legibility Mode */
+    [data-font="hyperlegible"] {
+      --font-sans: 'Atkinson Hyperlegible', sans-serif !important;
+      letter-spacing: 0.03em;
+      word-spacing: 0.05em;
+      line-height: 1.8 !important;
+    }
+
+    /* Strict High-Contrast Mode */
+    [data-contrast="high"] {
+      --bg-canvas: #ffffff !important;
+      --bg-card: #ffffff !important;
+      --text-main: #000000 !important;
+      --text-muted: #111111 !important;
+      --border-color: #000000 !important;
+      --primary: #0000ee !important;
+      --focus-ring: #d9381e !important;
+    }
+    [data-theme="dark"][data-contrast="high"] {
+      --bg-canvas: #000000 !important;
+      --bg-card: #000000 !important;
+      --text-main: #ffffff !important;
+      --text-muted: #eeeeee !important;
+      --border-color: #ffffff !important;
+      --primary: #66b3ff !important;
+      --focus-ring: #ffea00 !important;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.65;
+      font-weight: 400;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      overflow-x: hidden;
+    }
+
+    /* Skip link for full keyboard accessibility */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 1rem;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      font-weight: 700;
+      z-index: 10000;
+      border-radius: 0 0 6px 6px;
+      transition: top 0.2s ease-in-out;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--accent);
+    }
+
+    /* Live Region Screen Reader Helper */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Focus States */
+    a:focus-visible, button:focus-visible, input:focus-visible, [tabindex="0"]:focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 3px;
+    }
+
+    /* Layout Containers */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ==========================================================================
+       ACCESSIBILITY & CONTROL TOOLBAR
+       ========================================================================== */
+    .a11y-bar {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+      font-size: 0.85rem;
+    }
+    .a11y-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .a11y-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .a11y-btn:hover {
+      background-color: var(--bg-card-subtle);
+    }
+    .a11y-btn[aria-pressed="true"] {
+      background-color: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .brand-link {
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .brand-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.5rem 0.2rem;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a:focus-visible {
+      color: var(--primary);
+    }
+    nav a[aria-current="page"] {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    /* ==========================================================================
+       HERO / INTRO SECTION
+       ========================================================================== */
+    .hero {
+      padding: 4.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(180deg, var(--bg-canvas) 0%, var(--bg-card) 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 720px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-color);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .badge.active {
+      background: var(--accent-bg);
+      border-color: var(--accent);
+      color: var(--primary);
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: 2px solid var(--primary);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 2px solid var(--border-color);
+    }
+    .btn-secondary:hover {
+      background-color: var(--bg-card-subtle);
+      border-color: var(--text-muted);
+    }
+
+    /* Headshot Card */
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .avatar-wrapper {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a8a, #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.5rem;
+      font-weight: 800;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+    .hero-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .profile-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      list-style: none;
+    }
+    .profile-links a {
+      color: var(--primary);
+      text-decoration: underline;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SECTION COMMON STYLES
+       ========================================================================== */
+    section {
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+    .section-kicker {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      max-width: 800px;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE RESEARCH-TEACHING NEXUS (WCAG Accessible Interactive Diagram)
+       ========================================================================== */
+    .nexus-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .nexus-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+    }
+    .nexus-presets {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .preset-btn {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover {
+      background: var(--accent-bg);
+      border-color: var(--accent);
+    }
+    .preset-btn[aria-pressed="true"] {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Diagram Grid Layout */
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: 1fr 140px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      position: relative;
+    }
+    .diagram-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .diagram-col-header {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+      text-align: center;
+    }
+    .diagram-node {
+      background: var(--bg-canvas);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      cursor: pointer;
+      text-align: left;
+      position: relative;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+    .diagram-node:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .diagram-node[aria-selected="true"] {
+      border-color: var(--primary);
+      background-color: var(--accent-bg);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .diagram-node .node-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .diagram-node h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text-main);
+    }
+    .diagram-node p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Center Connector SVG */
+    .diagram-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+    }
+    .center-hub {
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-lg);
+      z-index: 2;
+    }
+    .center-hub span {
+      font-size: 0.65rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    /* Deep Dive Panel (Accessible detail inspection) */
+    .nexus-details-panel {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--bg-card-subtle);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+    }
+    .nexus-details-panel h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .nexus-details-panel .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .evidence-item h5 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+    }
+    .evidence-item p {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    /* Fallback Accessible Table */
+    .nexus-table-view {
+      display: none;
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .nexus-table-view th, .nexus-table-view td {
+      border: 1px solid var(--border-color);
+      padding: 0.85rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .nexus-table-view th {
+      background-color: var(--bg-card-subtle);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       RESEARCH AGENDA & GRANTS
+       ========================================================================== */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+    .agenda-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .agenda-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+    .agenda-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .agenda-card ul {
+      list-style-position: inside;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .agenda-card li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Grants Table */
+    .grants-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    table.data-table th {
+      background-color: var(--bg-card-subtle);
+      color: var(--text-main);
+      padding: 1rem 1.25rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--border-color);
+    }
+    table.data-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    table.data-table tr:last-child td {
+      border-bottom: none;
+    }
+    .role-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 4px;
+      background: var(--accent-bg);
+      color: var(--primary);
+    }
+
+    /* ==========================================================================
+       PUBLICATIONS SECTION
+       ========================================================================== */
+    .pub-filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      background: var(--bg-card-subtle);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .pub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s ease;
+    }
+    .pub-card:hover {
+      border-color: var(--accent);
+    }
+    .pub-meta {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .pub-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+    .pub-authors {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .pub-venue {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+    .pub-links {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .pub-link {
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       TEACHING & FACULTY DEVELOPMENT SECTION
+       ========================================================================== */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .teaching-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+    }
+    .teaching-box h3 {
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .course-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .course-item:last-child {
+      border-bottom: none;
+    }
+    .course-code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .course-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 0.15rem 0;
+    }
+    .course-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SERVICE & LEADERSHIP
+       ========================================================================== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+    .service-card ul {
+      list-style-position: inside;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .service-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .diagram-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .center-hub {
+        margin: 1rem auto;
+        width: 100%;
+        border-radius: 8px;
+        height: auto;
+        padding: 1rem;
+      }
+      .teaching-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Live Announcer for Screen Readers -->
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Accessibility & Personalization Toolbar -->
+  <aside class="a11y-bar" aria-label="Accessibility and display settings">
+    <div class="container a11y-container">
+      <span style="font-weight: 600; font-size: 0.8rem; color: var(--text-light);">Display Preferences:</span>
+      <button type="button" class="a11y-btn" id="toggle-theme" aria-pressed="false" aria-label="Toggle dark mode">
+        <span>🌓</span> Dark Mode
+      </button>
+      <button type="button" class="a11y-btn" id="toggle-contrast" aria-pressed="false" aria-label="Toggle high contrast">
+        <span>👁️</span> High Contrast
+      </button>
+      <button type="button" class="a11y-btn" id="toggle-font" aria-pressed="false" aria-label="Toggle dyslexia-friendly Atkinson Hyperlegible font">
+        <span>🔤</span> Atkinson Font
+      </button>
+    </div>
+  </aside>
+
+  <!-- Sticky Header & Primary Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="#top" class="brand-link" aria-label="Armanto Sutedjo home page">
+        <span class="brand-name">Dr. Armanto Sutedjo</span>
+        <span class="brand-title">Learning Sciences • AI in Education • IDT</span>
+      </a>
+
+      <nav aria-label="Primary portfolio navigation">
+        <ul>
+          <li><a href="#about">Overview</a></li>
+          <li><a href="#nexus">Nexus Diagram</a></li>
+          <li><a href="#research">Research & Grants</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#service">Service</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" role="main">
+
+    <!-- HERO / OVERVIEW SECTION -->
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="section-kicker">Faculty Candidate Dossier</p>
+          <h1>Armanto Sutedjo, Ph.D.</h1>
+          <p class="hero-subtitle">Educational Researcher & Learning Systems Leader</p>
+          
+          <div class="hero-badges" aria-label="Scholarly domain keywords">
+            <span class="badge active">Generative AI in Education</span>
+            <span class="badge active">Design-Based Research (DBR)</span>
+            <span class="badge active">Human-AI Interaction</span>
+            <span class="badge">Self-Regulated Learning</span>
+            <span class="badge">Instructional Technology</span>
+            <span class="badge">Enterprise Analytics</span>
+          </div>
+
+          <p class="hero-lead">
+            I research and design evidence-based models for integrating emerging technologies—particularly Generative AI (GenAI)—into higher education and workforce learning. My scholarship investigates how institutional policy, faculty instructional readiness, and student self-regulation intersect to drive meaningful, ethical, and learner-centered innovation.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#nexus" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Explore Research–Teaching Nexus
+            </a>
+            <a href="mailto:armanto.sutedjo@gmail.com" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Contact Candidate
+            </a>
+          </div>
+        </div>
+
+        <!-- Academic Dossier Snapshot Card -->
+        <aside class="hero-card" aria-label="Candidate Credentials Snapshot">
+          <div class="avatar-wrapper" aria-hidden="true">AS</div>
+          <h2>Armanto Sutedjo, Ph.D.</h2>
+          <p>Educational Psychology: Learning, Design, and Technology (Texas A&M University, 2023)</p>
+          
+          <ul class="profile-links" aria-label="Scholarly profiles and contact links">
+            <li><a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+            <li><a href="https://orcid.org" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+
+          <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-color); text-align: left; font-size: 0.82rem; color: var(--text-muted);">
+            <div><strong>Location:</strong> College Station, TX</div>
+            <div><strong>Current Appointment:</strong> Senior Educational Consultant</div>
+            <div><strong>Institutional Focus:</strong> Enterprise Learning Systems & AI Strategy</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE NEXUS DIAGRAM -->
+    <section id="nexus" aria-labelledby="nexus-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Theoretical & Pedagogical Alignment</p>
+          <h2 id="nexus-heading" class="section-title">The Research–Teaching–Practice Nexus</h2>
+          <p class="section-desc">
+            An interactive framework demonstrating how my empirical investigations directly inform my studio pedagogy, student-centered course design, and institutional capacity building.
+          </p>
+        </div>
+
+        <div class="nexus-wrapper">
+          <!-- Nexus Controls & View Toggles -->
+          <div class="nexus-controls">
+            <div class="nexus-presets" role="group" aria-label="Interactive Diagram Preset Pathways">
+              <span style="font-size: 0.85rem; font-weight: 700; align-self: center; margin-right: 0.25rem;">Select Dimension:</span>
+              <button type="button" class="preset-btn" data-target="node-r1" aria-pressed="false">1. AI Literacy & Readiness</button>
+              <button type="button" class="preset-btn" data-target="node-r2" aria-pressed="false">2. Simulated Classrooms (ArguMath)</button>
+              <button type="button" class="preset-btn" data-target="node-r3" aria-pressed="false">3. Self-Regulation & Systems</button>
+            </div>
+            <div>
+              <button type="button" class="preset-btn" id="toggle-nexus-view" aria-expanded="false">
+                Switch to Accessible Matrix Table
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual / Keyboard Grid Diagram -->
+          <div class="diagram-grid" id="nexus-visual-view" role="region" aria-label="Interactive Alignment Matrix">
+            
+            <!-- Left Column: Empirical Research Pillars -->
+            <div class="diagram-column" role="group" aria-label="Empirical Research Pillars">
+              <div class="diagram-col-header">1. Empirical Research Agenda</div>
+              
+              <button type="button" class="diagram-node" id="node-r1" aria-selected="false" tabindex="0">
+                <div class="node-tag">Empirical Pillar I</div>
+                <h3>GenAI Readiness & Faculty Practice</h3>
+                <p>Cross-institutional studies and AI-TPACK frameworks assessing educator self-perceptions, ethical adoption, and 21st-century skills.</p>
+              </button>
+
+              <button type="button" class="diagram-node" id="node-r2" aria-selected="false" tabindex="0">
+                <div class="node-tag">Empirical Pillar II</div>
+                <h3>Simulations & Game-Based Learning</h3>
+                <p>ArguMath multi-agent LLM classroom simulations and STEM game-based meta-analyses for high-stakes professional practice.</p>
+              </button>
+
+              <button type="button" class="diagram-node" id="node-r3" aria-selected="false" tabindex="0">
+                <div class="node-tag">Empirical Pillar III</div>
+                <h3>Self-Regulation & Enterprise Analytics</h3>
+                <p>TAM2 inquiry, Canvas LMS analytics redesign, and multimodal scaffolding of learner metacognitive regulation.</p>
+              </button>
+            </div>
+
+            <!-- Center Column: Translational Hub -->
+            <div class="diagram-center" aria-hidden="true">
+              <div class="center-hub">
+                Translational
+                <span>Design-Based Research (DBR)</span>
+              </div>
+            </div>
+
+            <!-- Right Column: Teaching & Studio Translation -->
+            <div class="diagram-column" role="group" aria-label="Classroom and Mentorship Translation">
+              <div class="diagram-col-header">2. Classroom & Studio Practice</div>
+
+              <div class="diagram-node" id="node-t1" aria-selected="false">
+                <div class="node-tag">Pedagogical Translation I</div>
+                <h3>Applied Tool Selection & Ethics</h3>
+                <p>Teaching learners to test generative outputs against evidence, interrogate algorithmic bias, and maintain human oversight.</p>
+              </div>
+
+              <div class="diagram-node" id="node-t2" aria-selected="false">
+                <div class="node-tag">Pedagogical Translation II</div>
+                <h3>Iterative Prototyping & Studio Critique</h3>
+                <p>Graduate studio inquiry (LDTC 621/642): backward design, low-stakes rehearsal, and authentic client problem solving.</p>
+              </div>
+
+              <div class="diagram-node" id="node-t3" aria-selected="false">
+                <div class="node-tag">Pedagogical Translation III</div>
+                <h3>Autonomous & Metacognitive Mastery</h3>
+                <p>Structuring personalized learning pathways that empower students to navigate workforce automation with adaptive judgment.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Accessible Detailed Inspector (Announced to screen readers) -->
+          <div class="nexus-details-panel" id="nexus-detail-container" role="region" aria-live="polite">
+            <h4 id="nexus-detail-title">Alignment Dimension: Select a node or preset above to inspect translation details</h4>
+            <p id="nexus-detail-summary">Select any research pillar or pedagogical translation node to examine the underlying theoretical anchor, classroom implementation, and verifiable portfolio evidence.</p>
+            <div class="evidence-grid" id="nexus-detail-evidence">
+              <div class="evidence-item">
+                <h5>Theoretical Anchor</h5>
+                <p>Design-Based Research (DBR), AI-TPACK, and Constructivist Studio Pedagogy.</p>
+              </div>
+              <div class="evidence-item">
+                <h5>Classroom Operationalization</h5>
+                <p>Students engage in iterative design cycles, critiquing automated system outputs with empirical standards.</p>
+              </div>
+              <div class="evidence-item">
+                <h5>Verifiable Evidence</h5>
+                <p>Peer-reviewed scholarship, funded internal/external grants, and graduate course design artifacts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alternate Linear Table View for Assistive Devices -->
+          <table class="nexus-table-view" id="nexus-table-view" aria-label="Research and Teaching Nexus Detailed Matrix">
+            <thead>
+              <tr>
+                <th scope="col">Research Program</th>
+                <th scope="col">Theoretical Framework</th>
+                <th scope="col">Pedagogical Translation</th>
+                <th scope="col">Course / Institutional Artifact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GenAI Readiness & Faculty Practice</strong><br>Cross-institutional faculty preparation studies.</td>
+                <td>AI-TPACK & TAM2 Adoption Models</td>
+                <td>Integrating prompt engineering, critical bias audits, and responsible AI workflows into authentic coursework.</td>
+                <td>Studies in Technology Enhanced Learning (2025); Frontiers in Education (2026); Faculty AI Playground series.</td>
+              </tr>
+              <tr>
+                <td><strong>Simulated Classrooms & Gaming</strong><br>ArguMath pre-service teacher training platform.</td>
+                <td>Multi-Agent LLMs & Social Constructivism</td>
+                <td>Studio-based iterative prototyping (LDTC 621/642), peer review systems (Peerceptiv), and clinical micro-simulations.</td>
+                <td>AIED 2026 Conference Paper; AERA 2024 STEM review; veterinary clinical extraction study.</td>
+              </tr>
+              <tr>
+                <td><strong>Self-Regulation & Learning Analytics</strong><br>Metacognitive support via integrated LMS environments.</td>
+                <td>Metacognition & Self-Regulated Learning (SRL)</td>
+                <td>Backward course design, transparent assessment rubrics, and data-informed feedback loops for diverse adult learners.</td>
+                <td>Galloway Foundation Grants ($24k, $20k); Canvas New Analytics faculty development programming.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH AGENDA & FUNDING -->
+    <section id="research" aria-labelledby="research-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Scholarly Impact</p>
+          <h2 id="research-heading" class="section-title">Research Program & Funded Projects</h2>
+          <p class="section-desc">
+            My research examines the systemic translation of artificial intelligence and emerging technologies into higher education, focusing on educator readiness, learner metacognition, and scalable pedagogical simulations.
+          </p>
+        </div>
+
+        <div class="agenda-grid">
+          <div class="agenda-card">
+            <h3>1. Institutional Readiness & Faculty Support</h3>
+            <p>
+              Investigating the structural imbalance between institutional compliance policies and pedagogical enablement. My cross-institutional work highlights that while universities provide ethical mandates, instructors require practice-based, design-centered development to integrate AI meaningfully.
+            </p>
+            <ul>
+              <li>Empirical validation using AI-TPACK across STEM and humanities disciplines.</li>
+              <li>IRB-approved TAM2 surveys evaluating perceived usefulness and professional readiness.</li>
+            </ul>
+          </div>
+
+          <div class="agenda-card">
+            <h3>2. AI-Simulated Practice Environments</h3>
+            <p>
+              Designing, testing, and deploying multi-agent LLM simulations that allow pre-service educators and professional learners to rehearse complex pedagogical maneuvers within low-risk, high-fidelity settings.
+            </p>
+            <ul>
+              <li><strong>ArguMath:</strong> Multi-agent platform for orchestrating collective argumentation.</li>
+              <li>Interdisciplinary translation across veterinary clinical data analysis and STEM games.</li>
+            </ul>
+          </div>
+
+          <div class="agenda-card">
+            <h3>3. Metacognition & Self-Regulation</h3>
+            <p>
+              Investigating how human-AI co-creation environments impact student metacognition, task persistence, and autonomous problem-solving within enterprise LMS ecosystems.
+            </p>
+            <ul>
+              <li>Evaluating Google Gemini integration within Canvas for self-regulation outcomes.</li>
+              <li>Designing actionable learning analytics dashboards to support timely interventions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Grants Table -->
+        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">Sponsored Research & Collaborative Grants</h3>
+        <div class="grants-container">
+          <table class="data-table" aria-label="Sponsored Research and Collaborative Grants">
+            <thead>
+              <tr>
+                <th scope="col">Period</th>
+                <th scope="col">Project Title</th>
+                <th scope="col">Funding Agency</th>
+                <th scope="col">Role</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2026–2027</strong></td>
+                <td>Self-Regulation and Metacognition in Student's Learning with Generative AI</td>
+                <td>Galloway Foundation</td>
+                <td><span class="role-badge">Principal Investigator</span></td>
+                <td>$24,000</td>
+                <td>Funded</td>
+              </tr>
+              <tr>
+                <td><strong>2025–2026</strong></td>
+                <td>ArguMath: AI-Simulated Classrooms for Training Preservice Teachers</td>
+                <td>Division of Research (Collaborative Seed Grant)</td>
+                <td><span class="role-badge">Collaborator</span></td>
+                <td>$25,000</td>
+                <td>Funded</td>
+              </tr>
+              <tr>
+                <td><strong>2025–2026</strong></td>
+                <td>Generative AI Integration in Veterinary Education: AI Tutor & Literacy</td>
+                <td>Institute of Data Science</td>
+                <td><span class="role-badge">Co-Investigator</span></td>
+                <td>$5k credits + $2,000</td>
+                <td>Funded</td>
+              </tr>
+              <tr>
+                <td><strong>2025–2026</strong></td>
+                <td>Promoting Classroom-Level Innovation through Generative AI</td>
+                <td>Galloway Foundation</td>
+                <td><span class="role-badge">Principal Investigator</span></td>
+                <td>$20,000</td>
+                <td>Funded</td>
+              </tr>
+              <tr>
+                <td><strong>2024–2025</strong></td>
+                <td>Evidence-Based Teaching and Learning with Generative AI Research</td>
+                <td>Galloway Foundation</td>
+                <td><span class="role-badge">Principal Investigator</span></td>
+                <td>$20,000</td>
+                <td>Funded</td>
+              </tr>
+              <tr>
+                <td><strong>2023–2024</strong></td>
+                <td>Generative Artificial Intelligence (AI) for Teaching and Learning</td>
+                <td>Galloway Foundation</td>
+                <td><span class="role-badge">Co-Investigator</span></td>
+                <td>$36,000</td>
+                <td>Funded</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" aria-labelledby="pubs-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Scholarship & Dissemination</p>
+          <h2 id="pubs-heading" class="section-title">Selected Publications & Manuscripts</h2>
+          <p class="section-desc">
+            Peer-reviewed journal articles, conference proceedings, and book chapters exploring technology-enhanced learning, AI in education, and digital pedagogy.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="pub-filter-bar" role="toolbar" aria-label="Filter publications by type">
+          <span style="font-size: 0.85rem; font-weight: 700; align-self: center; margin-right: 0.25rem;">Filter:</span>
+          <button type="button" class="filter-btn active" data-filter="all">All Items</button>
+          <button type="button" class="filter-btn" data-filter="journal">Peer-Reviewed Journals</button>
+          <button type="button" class="filter-btn" data-filter="conference">Conferences & Proceedings</button>
+          <button type="button" class="filter-btn" data-filter="review">Manuscripts Under Review</button>
+        </div>
+
+        <div class="pub-list" id="pub-items-container">
+          
+          <!-- Journal 1 -->
+          <article class="pub-card" data-category="journal">
+            <div class="pub-meta"><span>Journal Article</span> • <span>2026</span></div>
+            <h3 class="pub-title">Assessing Faculty Self-Perceived Knowledge in Using Generative AI to Teach 21st-Century Skills</h3>
+            <p class="pub-authors"><strong>Sutedjo, A.</strong>, Chowdhury, M., & Liu, S. P.</p>
+            <p class="pub-venue">Frontiers in Education, 11, Article 1913310.</p>
+            <div class="pub-links">
+              <a href="https://doi.org/10.3389/feduc.2026.1913310" class="pub-link" target="_blank" rel="noopener noreferrer">DOI: 10.3389/feduc.2026.1913310</a>
+            </div>
+          </article>
+
+          <!-- Journal 2 -->
+          <article class="pub-card" data-category="journal">
+            <div class="pub-meta"><span>Journal Article</span> • <span>2025</span></div>
+            <h3 class="pub-title">Generative AI in Higher Education: A Cross-Institutional Study on Faculty Preparation and Resources</h3>
+            <p class="pub-authors"><strong>Sutedjo, A.</strong>, Liu, S. P., & Chowdhury, M.</p>
+            <p class="pub-venue">Studies in Technology Enhanced Learning, 4(1).</p>
+            <div class="pub-links">
+              <a href="http://dx.doi.org/10.21428/8c225f6e.955a547c" class="pub-link" target="_blank" rel="noopener noreferrer">DOI: 10.21428/8c225f6e.955a547c</a>
+            </div>
+          </article>
+
+          <!-- Under Review 1 -->
+          <article class="pub-card" data-category="review">
+            <div class="pub-meta"><span>Manuscript Under Review</span> • <span>2026</span></div>
+            <h3 class="pub-title">ChatGPT versus Veterinary Students for Clinical Data Extraction: A Mixed-Methods Study</h3>
+            <p class="pub-authors">Chang, Y., <strong>Sutedjo, A.</strong>, & Chu, C. P.</p>
+            <p class="pub-venue">Submitted for Publication.</p>
+          </article>
+
+          <!-- Under Review 2 -->
+          <article class="pub-card" data-category="review">
+            <div class="pub-meta"><span>Manuscript Under Review</span> • <span>2026</span></div>
+            <h3 class="pub-title">The Proof of the (Re)design is in the Data: Analytics-Informed Course Transformation</h3>
+            <p class="pub-authors">Varughese, J., <strong>Sutedjo, A.</strong>, & Ferrara, J.</p>
+            <p class="pub-venue">Submitted to Journal of Teaching and Learning with Technology.</p>
+          </article>
+
+          <!-- Conference / arXiv -->
+          <article class="pub-card" data-category="conference">
+            <div class="pub-meta"><span>Conference Proceeding / arXiv</span> • <span>2026</span></div>
+            <h3 class="pub-title">ArguMath: AI-Simulated Environment for Pre-Service Teacher Training in Orchestrating Classroom Mathematics Argumentation</h3>
+            <p class="pub-authors">Chun, J., Zhuang, Y., <strong>Sutedjo, A.</strong>, Xu, C., Ren, R., & Xia, M.</p>
+            <p class="pub-venue">Presented at the 2026 International Conference on Artificial Intelligence in Education (AIED), Seoul, South Korea.</p>
+            <div class="pub-links">
+              <a href="https://doi.org/10.48550/arXiv.2604.22205" class="pub-link" target="_blank" rel="noopener noreferrer">arXiv: 2604.22205</a>
+            </div>
+          </article>
+
+          <!-- Journal 3 -->
+          <article class="pub-card" data-category="journal">
+            <div class="pub-meta"><span>Journal Article</span> • <span>2024</span></div>
+            <h3 class="pub-title">Effects of Virtual Reality as a Patient Education Tool: A Meta-Analysis</h3>
+            <p class="pub-authors">Li, Y., Kim, M., & <strong>Sutedjo, A.</strong></p>
+            <p class="pub-venue">Journal of Educational Technology Development and Exchange, 17(2), 216–228.</p>
+            <div class="pub-links">
+              <a href="https://doi.org/10.18785/jetde.1702.10" class="pub-link" target="_blank" rel="noopener noreferrer">DOI: 10.18785/jetde.1702.10</a>
+            </div>
+          </article>
+
+          <!-- Book Chapter -->
+          <article class="pub-card" data-category="journal">
+            <div class="pub-meta"><span>Book Chapter</span> • <span>2021</span></div>
+            <h3 class="pub-title">A Naturalistic Inquiry into Digital Game-Based Learning in STEM Classes from the Instructors' Perspective</h3>
+            <p class="pub-authors">Li, Y., <strong>Sutedjo, A.</strong>, Ramos, S. J., Garcimartin, H. R., & Thomas, A.</p>
+            <p class="pub-venue">In Game-Based Learning Across the Disciplines (pp. 229–244). Springer.</p>
+            <div class="pub-links">
+              <a href="https://doi.org/10.1007/978-3-030-75142-5_10" class="pub-link" target="_blank" rel="noopener noreferrer">DOI: 10.1007/978-3-030-75142-5_10</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHING & FACULTY DEVELOPMENT -->
+    <section id="teaching" aria-labelledby="teaching-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Pedagogical Practice</p>
+          <h2 id="teaching-heading" class="section-title">Teaching Philosophy & Course Design</h2>
+          <p class="section-desc">
+            Preparing students and future professionals to navigate workforce automation with adaptable judgment, ethical stewardship, and design rigor.
+          </p>
+        </div>
+
+        <div class="teaching-grid">
+          <!-- Philosophy Narrative -->
+          <div class="teaching-box">
+            <h3>Philosophy of Teaching</h3>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">
+              Artificial intelligence is not merely a cognitive crutch or tool; it fundamentally transforms professional practice. My teaching is grounded in backward design, studio critique, and iterative prototyping. I structure learning experiences that require students to:
+            </p>
+            <ul style="list-style-position: inside; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+              <li><strong>Select tools deliberately:</strong> Determine where AI augments human inquiry and where human oversight is vital.</li>
+              <li><strong>Audit outputs critically:</strong> Interrogate algorithmic bias, privacy vulnerabilities, and digital accessibility compliance (UDL).</li>
+              <li><strong>Demonstrate applied transfer:</strong> Solve authentic, consequential client problems through evidence-based revision cycles.</li>
+            </ul>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-card-subtle); border-radius: 6px;">
+              <p style="font-size: 0.88rem; font-style: italic; color: var(--text-main);">
+                "The ultimate objective is transfer: learners should graduate capable of applying adaptable professional judgment within unfamiliar, high-stakes environments."
+              </p>
+            </div>
+          </div>
+
+          <!-- Graduate Seminars & Studio Courses -->
+          <div class="teaching-box">
+            <h3>Graduate Studio Seminars Taught</h3>
+            <div class="course-item">
+              <div class="course-code">LDTC 621</div>
+              <div class="course-title">Graphic Communication and Interface Design</div>
+              <p class="course-desc">Graduate studio focusing on UI/UX theory, cognitive load management, interactive visual prototyping, and universal accessibility standards in educational software.</p>
+            </div>
+
+            <div class="course-item">
+              <div class="course-code">LDTC 642</div>
+              <div class="course-title">Designing for Mobile Learning</div>
+              <p class="course-desc">Advanced seminar examining mobile-first pedagogies, microlearning architectures, pervasive computing, and responsive courseware development.</p>
+            </div>
+
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-main);">Institutional Faculty Development Leadership</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Designed and led high-impact campus-wide series including the <em>Hear from Peers: Navigating AI in the Classroom</em> webinar series, the hands-on <em>AI Playground</em> studio, and institutes on prompt engineering and course-level chatbots.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL SERVICE & LEADERSHIP -->
+    <section id="service" aria-labelledby="service-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Citizenship & Engagement</p>
+          <h2 id="service-heading" class="section-title">Disciplinary & Institutional Leadership</h2>
+          <p class="section-desc">
+            Active service contributions across international learning technology societies, peer-reviewed journals, and university governance committees.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <div class="service-card">
+            <h3>Disciplinary Peer Review</h3>
+            <ul>
+              <li><strong>Frontiers in Artificial Intelligence</strong> (Frontiers)</li>
+              <li><strong>Discover Education</strong> (Springer Nature)</li>
+              <li><strong>Education Sciences</strong> (MDPI)</li>
+              <li><strong>Journal of Educational Technology Development and Exchange</strong> (JETDE)</li>
+              <li><strong>AI Enhanced Learning (AIEL)</strong> & <strong>JOLR</strong> (AACE)</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h3>Conference Leadership</h3>
+            <ul>
+              <li><strong>AECT:</strong> Association for Educational Communications & Technology Proposal Reviewer</li>
+              <li><strong>AERA:</strong> American Educational Research Association Proposal Reviewer</li>
+              <li><strong>EDUCAUSE:</strong> Annual Conference Reviewer</li>
+              <li><strong>Institute of Data Sciences:</strong> Seed Proposal Reviewer</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h3>Institutional Governance</h3>
+            <ul>
+              <li><strong>Lead:</strong> Center for Teaching Excellence Generative AI Advisory Committee</li>
+              <li><strong>Lead:</strong> Digital Learning Environment Enterprise Learning Tools Subgroup</li>
+              <li><strong>Member:</strong> Center for Teaching Excellence Vision Committee</li>
+              <li><strong>Member:</strong> First-Year Experience (Hullabaloo U) Mental Health & Wellness</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>Dr. Armanto Sutedjo</strong> | Tenure-Track Candidate Dossier</p>
+        <p style="font-size: 0.8rem; margin-top: 0.25rem;">Built with static HTML5, accessible CSS variables, and zero runtime dependencies.</p>
+      </div>
+      <div>
+        <a href="#top" style="color: var(--primary); text-decoration: underline; font-weight: 600;">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT: ACCESSIBILITY, INTERACTIVE DIAGRAM, & FILTERS
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const announcer = document.getElementById('sr-announcer');
+
+      // Helper to speak to assistive technology
+      function announce(message) {
+        if (announcer) {
+          announcer.textContent = message;
+        }
+      }
+
+      /* ----------------------------------------------------------------------
+         1. DISPLAY PREFERENCES & ACCESSIBILITY CONTROLS
+         ---------------------------------------------------------------------- */
+      const themeBtn = document.getElementById('toggle-theme');
+      const contrastBtn = document.getElementById('toggle-contrast');
+      const fontBtn = document.getElementById('toggle-font');
+
+      // Dark Mode
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.body.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.body.removeAttribute('data-theme');
+          themeBtn.setAttribute('aria-pressed', 'false');
+          announce('Dark mode disabled');
+        } else {
+          document.body.setAttribute('data-theme', 'dark');
+          themeBtn.setAttribute('aria-pressed', 'true');
+          announce('Dark mode enabled');
+        }
+      });
+
+      // High Contrast
+      contrastBtn.addEventListener('click', () => {
+        const isHigh = document.body.getAttribute('data-contrast') === 'high';
+        if (isHigh) {
+          document.body.removeAttribute('data-contrast');
+          contrastBtn.setAttribute('aria-pressed', 'false');
+          announce('High contrast mode disabled');
+        } else {
+          document.body.setAttribute('data-contrast', 'high');
+          contrastBtn.setAttribute('aria-pressed', 'true');
+          announce('High contrast mode enabled');
+        }
+      });
+
+      // Atkinson Hyperlegible Font
+      fontBtn.addEventListener('click', () => {
+        const isHyper = document.body.getAttribute('data-font') === 'hyperlegible';
+        if (isHyper) {
+          document.body.removeAttribute('data-font');
+          fontBtn.setAttribute('aria-pressed', 'false');
+          announce('Standard font enabled');
+        } else {
+          document.body.setAttribute('data-font', 'hyperlegible');
+          fontBtn.setAttribute('aria-pressed', 'true');
+          announce('Atkinson Hyperlegible font enabled');
+        }
+      });
+
+      /* ----------------------------------------------------------------------
+         2. INTERACTIVE RESEARCH-TEACHING NEXUS LOGIC
+         ---------------------------------------------------------------------- */
+      const nexusData = {
+        'node-r1': {
+          title: 'Dimension 1: Faculty AI Readiness & 21st-Century Pedagogical Skills',
+          summary: 'Connects empirical cross-institutional readiness surveys directly to learner-centered ethical tool adoption and prompt design.',
+          evidence: {
+            theory: 'AI-TPACK & TAM2 Adoption Models (Studies in Technology Enhanced Learning, 2025; Frontiers in Education, 2026).',
+            pedagogy: 'Authentic task-centered design: learners test generative systems, audit for bias, and practice human-in-the-loop oversight.',
+            artifact: 'Hear from Peers series, AI Playground workshops, and verified faculty confidence instruments.'
+          },
+          targetPair: 'node-t1'
+        },
+        'node-r2': {
+          title: 'Dimension 2: Simulated Classrooms & Low-Risk Rehearsal (ArguMath)',
+          summary: 'Translates multi-agent LLM simulations into graduate studio critique, iterative prototyping, and authentic practice.',
+          evidence: {
+            theory: 'Social Constructivism, Design-Based Research (DBR), and Naturalistic Inquiry in Games (Springer, 2021).',
+            pedagogy: 'LDTC 621/642 Studio Model: iterative sprint prototypes, backward design, and peer evaluation systems (Peerceptiv).',
+            artifact: 'ArguMath AIED 2026 publication, veterinary medicine clinical extraction study, and student project portfolios.'
+          },
+          targetPair: 'node-t2'
+        },
+        'node-r3': {
+          title: 'Dimension 3: Learner Metacognition & Learning Analytics Systems',
+          summary: 'Bridges LMS course analytics redesign with empirical investigations into student self-regulated learning with GenAI.',
+          evidence: {
+            theory: 'Metacognitive Regulation, SRL Frameworks, and Learning Analytics in Course Redesign (JTLT, under review).',
+            pedagogy: 'Self-directed learning pathways, transparent rubrics, and continuous formative analytics check-ins.',
+            artifact: 'Galloway Foundation Grants ($24k, $20k) and Canvas Enterprise Learning Analytics implementations.'
+          },
+          targetPair: 'node-t3'
+        }
+      };
+
+      const nodes = document.querySelectorAll('.diagram-node');
+      const presetBtns = document.querySelectorAll('.preset-btn[data-target]');
+      const detailTitle = document.getElementById('nexus-detail-title');
+      const detailSummary = document.getElementById('nexus-detail-summary');
+      const detailEvidence = document.getElementById('nexus-detail-evidence');
+
+      function activateNexusDimension(nodeId) {
+        // Find configuration (support clicking right-column nodes by inverse lookup)
+        let key = nodeId;
+        if (nodeId === 'node-t1') key = 'node-r1';
+        if (nodeId === 'node-t2') key = 'node-r2';
+        if (nodeId === 'node-t3') key = 'node-r3';
+
+        const data = nexusData[key];
+        if (!data) return;
+
+        // Reset visual state
+        nodes.forEach(n => {
+          n.setAttribute('aria-selected', 'false');
+          n.style.borderColor = 'var(--border-color)';
+        });
+        presetBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+
+        // Highlight active pair
+        const sourceNode = document.getElementById(key);
+        const targetNode = document.getElementById(data.targetPair);
+
+        if (sourceNode) {
+          sourceNode.setAttribute('aria-selected', 'true');
+          sourceNode.style.borderColor = 'var(--primary)';
+        }
+        if (targetNode) {
+          targetNode.setAttribute('aria-selected', 'true');
+          targetNode.style.borderColor = 'var(--accent)';
+        }
+
+        // Highlight preset button if matched
+        const activeBtn = document.querySelector(`.preset-btn[data-target="${key}"]`);
+        if (activeBtn) activeBtn.setAttribute('aria-pressed', 'true');
+
+        // Update detail panel
+        detailTitle.textContent = data.title;
+        detailSummary.textContent = data.summary;
+        detailEvidence.innerHTML = `
+          <div class="evidence-item">
+            <h5>Theoretical Anchor</h5>
+            <p>${data.evidence.theory}</p>
+          </div>
+          <div class="evidence-item">
+            <h5>Classroom Operationalization</h5>
+            <p>${data.evidence.pedagogy}</p>
+          </div>
+          <div class="evidence-item">
+            <h5>Verifiable Committee Evidence</h5>
+            <p>${data.evidence.artifact}</p>
+          </div>
+        `;
+
+        announce(`Active dimension updated: ${data.title}`);
+      }
+
+      // Add click & keyboard listeners to nodes
+      nodes.forEach(node => {
+        node.addEventListener('click', () => activateNexusDimension(node.id));
+        node.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateNexusDimension(node.id);
+          }
+        });
+      });
+
+      // Preset Button Handlers
+      presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-target');
+          activateNexusDimension(target);
+        });
+      });
+
+      // Accessible View Toggle (Visual Grid vs Semantic Table)
+      const toggleViewBtn = document.getElementById('toggle-nexus-view');
+      const visualView = document.getElementById('nexus-visual-view');
+      const tableView = document.getElementById('nexus-table-view');
+
+      toggleViewBtn.addEventListener('click', () => {
+        const isTable = tableView.style.display === 'table';
+        if (isTable) {
+          tableView.style.display = 'none';
+          visualView.style.display = 'grid';
+          toggleViewBtn.setAttribute('aria-expanded', 'false');
+          toggleViewBtn.textContent = 'Switch to Accessible Matrix Table';
+          announce('Displaying visual diagram view');
+        } else {
+          tableView.style.display = 'table';
+          visualView.style.display = 'none';
+          toggleViewBtn.setAttribute('aria-expanded', 'true');
+          toggleViewBtn.textContent = 'Switch to Interactive Diagram View';
+          announce('Displaying accessible matrix table view');
+        }
+      });
+
+      /* ----------------------------------------------------------------------
+         3. PUBLICATION FILTERING
+         ---------------------------------------------------------------------- */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const pubCards = document.querySelectorAll('.pub-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const category = btn.getAttribute('data-filter');
+          let visibleCount = 0;
+
+          pubCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = 'block';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          announce(`Showing ${visibleCount} publications for category: ${btn.textContent}`);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
