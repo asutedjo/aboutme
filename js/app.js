@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   loadMarkdownContent();
   loadPortfolioData();
   initTeachingTabsSystem();
+  initResearchTabsSystem();
+  initPublicationsTabsSystem();
+  initWorkshopTabsSystem();
+  initServiceTabsSystem();
   initNexusDiagram();
 });
 
