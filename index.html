@@ -9,6 +9,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Styling for profile icon link buttons */
+    .profile-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0 1rem;
+    }
+    .profile-social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .profile-social-btn:hover {
+      background-color: var(--bg-card-subtle);
+      border-color: var(--accent);
+      color: var(--primary);
+    }
+    .profile-social-btn svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -29,13 +63,13 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-link">
         <span class="brand-name">Dr. Armanto Sutedjo</span>
-        <span class="brand-title">Learning, Design &amp; Technology • AI in Education</span>
+        <span class="brand-title">Educational Researcher &amp; Learning Innovation Leader</span>
       </a>
       <nav aria-label="Primary portfolio navigation">
         <ul>
           <li><a href="index.html" aria-current="page">Overview</a></li>
           <li><a href="nexus.html">Research–Teaching Nexus</a></li>
-          <li><a href="research.html">Research & Grants</a></li>
+          <li><a href="research.html">Research &amp; Grants</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="teaching.html">Teaching</a></li>
           <li><a href="service.html">Service</a></li>
@@ -48,21 +82,22 @@
   <main id="main-content" class="container" role="main">
     <div class="hero-grid">
       <div class="card">
-        <div class="markdown-body" data-markdown-src="content/overview.md">
+        <div class="markdown-body">
           <h1>Armanto Sutedjo, Ph.D.</h1>
-          <h2>Educational Researcher &amp; Learning Systems Leader</h2>
-          <p>I bring more than two decades of professional experience across education, instructional development, research, and organizational leadership, with a dedicated focus on how artificial intelligence can expand teaching and learning in authentic classroom settings.</p>
-          <p>My work centers on partnering with faculty, academic programs, and interdisciplinary research teams to design evidence-based learning experiences, support AI literacy, and study the practical implications of generative AI for pedagogy, assessment, student engagement, and academic integrity.</p>
-          <p>I am especially interested in interdisciplinary collaborations that examine AI as a tool for improving learning, supporting instructors, shaping future workforce development, and preparing students to become citizen-professionals who can use emerging technologies responsibly, ethically, and effectively in their fields and communities.</p>
+          <h2>Educational Researcher &amp; Learning Innovation Leader</h2>
+          
+          <p>I bring more than two decades of professional experience across education, instructional development, research, and organizational leadership, with a focus on how emerging technologies, particularly artificial intelligence, can advance teaching and learning in authentic educational settings[cite: 1].</p>
+          
+          <p>My work centers on partnering with faculty, academic programs, and interdisciplinary research teams to design and implement evidence-based learning experiences, build AI literacy, and study the practical implications of generative AI for pedagogy, assessment, student engagement, and academic integrity[cite: 1].</p>
+          
+          <p>I am especially interested in interdisciplinary collaborations that connect research, educational innovation, and professional practice to examine how AI can improve learning, support instructors, contribute to workforce development, and prepare students to become citizen-professionals who use emerging technologies responsibly, ethically, and effectively in their fields and communities[cite: 1].</p>
         </div>
 
-        <div class="badge-list" aria-label="Core research domains">
-          <span class="badge">Generative AI in Education</span>
-          <span class="badge">Design-Based Research (DBR)</span>
-          <span class="badge">AI-TPACK &amp; TAM2</span>
-          <span class="badge">Self-Regulated Learning</span>
+        <!-- Revised 3 Personal Branding Tags -->
+        <div class="badge-list" aria-label="Core areas of expertise">
+          <span class="badge">AI in Education</span>
           <span class="badge">Instructional Design &amp; Technology</span>
-          <span class="badge">Enterprise Learning Analytics</span>
+          <span class="badge">Self-Regulated Learning</span>
         </div>
 
         <div style="display:flex; gap:0.85rem; flex-wrap:wrap; margin-top:1.75rem;">
@@ -75,21 +110,53 @@
       <aside class="card" aria-label="Candidate Quick Facts">
         <div style="width:110px; height:110px; border-radius:50%; background:linear-gradient(135deg, #1e3a8a, #0284c7); color:#fff; display:flex; align-items:center; justify-content:center; font-size:2.2rem; font-weight:800; margin:0 auto 1rem;">AS</div>
         <h2 style="font-size:1.2rem; text-align:center; margin-bottom:0.25rem;">Armanto Sutedjo, Ph.D.</h2>
-        <p style="font-size:0.88rem; color:var(--text-muted); text-align:center; margin-bottom:1.25rem;">Senior Educational Consultant<br>Center for Teaching Excellence<br>Texas A&amp;M University</p>
+        <p style="font-size:0.88rem; color:var(--text-muted); text-align:center; margin-bottom:0.5rem;">
+          Senior Educational Consultant<br>
+          Center for Teaching Excellence<br>
+          Texas A&amp;M University[cite: 1, 2]
+        </p>
+
+        <!-- Social & Academic Profiles with Exact Logos -->
+        <div class="profile-social-links" aria-label="Scholarly and professional profiles">
+          <!-- Google Scholar Logo -->
+          <a href="https://scholar.google.com/citations?hl=en&user=MFg1secAAAAJ" target="_blank" rel="noopener noreferrer" class="profile-social-btn" title="Google Scholar Profile">
+            <svg viewBox="0 0 512 512" aria-hidden="true">
+              <path d="M256 411.12L0 202.48l256-202.48 256 202.48z" fill="#4285F4"/>
+              <path d="M256 411.12l256-202.48V496H0V202.48z" fill="#A4C639" opacity="0"/>
+              <path d="M256 214.24c-82.68 0-149.76 67.08-149.76 149.76 0 82.69 67.08 149.76 149.76 149.76s149.76-67.07 149.76-149.76c0-82.68-67.08-149.76-149.76-149.76z" fill="#7baaf7"/>
+              <path d="M256 0v214.24l256-11.76z" fill="#3367d6"/>
+            </svg>
+            <span>Scholar</span>
+          </a>
+
+          <!-- ORCID Logo -->
+          <a href="https://orcid.org/0000-0001-8737-5769" target="_blank" rel="noopener noreferrer" class="profile-social-btn" title="ORCID Profile">
+            <svg viewBox="0 0 256 256" aria-hidden="true">
+              <path fill="#A6CE39" d="M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z"/>
+              <path fill="#FFFFFF" d="M86.3,186.2H70.9V79.1h15.4V186.2z M78.6,61.6c-5.5,0-9.9-4.4-9.9-9.9c0-5.5,4.4-9.9,9.9-9.9c5.5,0,9.9,4.4,9.9,9.9C88.5,57.2,84.1,61.6,78.6,61.6z M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.7c27.6,0,43.7-17.3,43.7-39.7c0-20.4-15.7-39.7-43.3-39.7h-25.1V172.4z"/>
+            </svg>
+            <span>ORCID</span>
+          </a>
+
+          <!-- LinkedIn Logo -->
+          <a href="https://www.linkedin.com/in/armantos/" target="_blank" rel="noopener noreferrer" class="profile-social-btn" title="LinkedIn Profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#0A66C2" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
         <hr style="border:none; border-top:1px solid var(--border-color); margin:1rem 0;">
         <div style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
-          <div style="display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem;">
-            <a href="https://scholar.google.com/citations?hl=en&user=MFg1secAAAAJ" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.35rem 0.7rem; font-size:0.75rem;">🎓 Scholar</a>
-            <a href="https://orcid.org/0000-0001-8737-5769" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.35rem 0.7rem; font-size:0.75rem;">🆔 ORCID</a>
-            <a href="https://www.linkedin.com/in/armantos/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.35rem 0.7rem; font-size:0.75rem;">💼 LinkedIn</a>
-          </div>
-          <p><strong>Email:</strong> <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></p>
-          <p><strong>Phone:</strong> (346) 632-1453</p>
-          <p><strong>Location:</strong> College Station, TX</p>
+          <p><strong>Email:</strong> <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></p>[cite: 1]
+          <p><strong>Phone:</strong> (346) 632-1453</p>[cite: 1]
+          <p><strong>Location:</strong> College Station, TX</p>[cite: 1]
         </div>
       </aside>
     </div>
 
+    <!-- Academic Degrees Table -->
     <section class="card" aria-labelledby="edu-heading">
       <h2 id="edu-heading" style="font-size:1.5rem; color:var(--primary); margin-bottom:1rem;">Academic Preparation</h2>
       <div class="table-responsive">
@@ -103,24 +170,24 @@
           </thead>
           <tbody id="education-list">
             <tr>
-              <td><strong>2023</strong></td>
-              <td>Doctor of Philosophy in Educational Psychology: Learning, Design, and Technology</td>
-              <td>Texas A&amp;M University, College Station, TX</td>
+              <td><strong>2023</strong></td>[cite: 1]
+              <td>Doctor of Philosophy in Educational Psychology: Learning, Design, and Technology</td>[cite: 1]
+              <td>Texas A&amp;M University, College Station, TX</td>[cite: 1]
             </tr>
             <tr>
-              <td><strong>2014</strong></td>
-              <td>Master of Education in Curriculum and Instruction</td>
-              <td>Houston Baptist University, Houston, TX</td>
+              <td><strong>2014</strong></td>[cite: 1]
+              <td>Master of Education in Curriculum and Instruction</td>[cite: 1]
+              <td>Houston Baptist University, Houston, TX</td>[cite: 1]
             </tr>
             <tr>
-              <td><strong>2005</strong></td>
-              <td>Master of Management in Business</td>
-              <td>IPMI Business School, Jakarta, Indonesia</td>
+              <td><strong>2005</strong></td>[cite: 1]
+              <td>Master of Management in Business</td>[cite: 1]
+              <td>IPMI Business School, Jakarta, Indonesia</td>[cite: 1]
             </tr>
             <tr>
-              <td><strong>1999</strong></td>
-              <td>Bachelor of Science in Industrial Engineering</td>
-              <td>Trisakti University, Jakarta, Indonesia</td>
+              <td><strong>1999</strong></td>[cite: 1]
+              <td>Bachelor of Science in Industrial Engineering</td>[cite: 1]
+              <td>Trisakti University, Jakarta, Indonesia</td>[cite: 1]
             </tr>
           </tbody>
         </table>
@@ -132,7 +199,7 @@
     <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
       <div>
         <strong>Armanto Sutedjo, Ph.D.</strong> — Academic Portfolio<br>
-        <span>College Station, TX • <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></span>
+        <span>College Station, TX • <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></span>[cite: 1]
       </div>
       <div>
         <span>WCAG 2.1 AA/AAA Accessible Digital Dossier</span>
