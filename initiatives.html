@@ -9,6 +9,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Workshop Tablist 4-column strict width grid */
+    #workshop-tablist {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 0.35rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    #workshop-tablist .tab-btn {
+      width: 100% !important;
+      padding: 0.55rem 0.3rem !important;
+      font-size: 0.78rem !important;
+      text-align: center !important;
+      justify-content: center !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    @media (max-width: 900px) {
+      #workshop-tablist {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      #workshop-tablist .tab-btn {
+        white-space: normal !important;
+      }
+    }
+    @media (max-width: 520px) {
+      #workshop-tablist {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    #workshop-panels-wrapper > section {
+      display: none;
+    }
+    #workshop-panels-wrapper > section.active {
+      display: block !important;
+    }
+    .workshop-title-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 1rem 0 1.5rem;
+    }
+    .workshop-title-list li {
+      position: relative;
+      padding: 0.55rem 0.75rem 0.55rem 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+    .workshop-title-list li:last-child {
+      border-bottom: none;
+    }
+    .workshop-title-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0.4rem;
+      top: 0.55rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -34,7 +98,7 @@
       <nav aria-label="Primary portfolio navigation">
         <ul>
           <li><a href="index.html">Overview</a></li>
-          <li><a href="research.html">Research & Grants</a></li>
+          <li><a href="research.html">Research &amp; Grants</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="teaching.html">Teaching</a></li>
           <li><a href="service.html">Service</a></li>
@@ -46,7 +110,7 @@
 
   <main id="main-content" class="container" role="main">
     
-    <!-- Section 1: Workshops (Tabbed by Topic) -->
+    <!-- Section 1: Workshops & Professional Learning (Tabbed by 4 Categories) -->
     <section class="card" aria-labelledby="workshops-heading">
       <div class="tabs-header-bar">
         <div>
@@ -61,112 +125,101 @@
       </div>
 
       <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
-        Designed and facilitated hands-on institutional workshops empowering faculty with prompt engineering, AI literacy, learning analytics, and evidence-based course design. Select a tab below to explore specific topic areas offered.
+        Designed and facilitated institutional workshops empowering faculty with prompt engineering, AI literacy, learning analytics, and evidence-based course design. Select a tab below to explore specific topic areas offered.
       </p>
 
-      <!-- Accessible ARIA Tablist for Workshops (5 tabs fitting strict width-fit grid) -->
+      <!-- Accessible ARIA Tablist for Workshops (4 tabs fitting strict width-fit grid) -->
       <div class="tablist-nav" id="workshop-tablist" role="tablist" aria-label="Workshop Topic Categories">
         <button type="button" role="tab" class="tab-btn" id="tab-ws-1" aria-selected="true" aria-controls="panel-ws-1" tabindex="0">
-          GenAI Foundations &amp; Copilot
+          AI Literacy &amp; Responsible Use
         </button>
         <button type="button" role="tab" class="tab-btn" id="tab-ws-2" aria-selected="false" aria-controls="panel-ws-2" tabindex="-1">
-          Pedagogy &amp; Course Design
+          Pedagogy &amp; AI
         </button>
         <button type="button" role="tab" class="tab-btn" id="tab-ws-3" aria-selected="false" aria-controls="panel-ws-3" tabindex="-1">
-          Assessment &amp; Analytics
+          Course &amp; Learning Design
         </button>
         <button type="button" role="tab" class="tab-btn" id="tab-ws-4" aria-selected="false" aria-controls="panel-ws-4" tabindex="-1">
-          AI Ethics &amp; Chatbots
-        </button>
-        <button type="button" role="tab" class="tab-btn" id="tab-ws-5" aria-selected="false" aria-controls="panel-ws-5" tabindex="-1">
-          Advanced Integration
+          Learning Technology &amp; Analytics
         </button>
       </div>
 
       <!-- Tab Panels Container -->
       <div id="workshop-panels-wrapper">
 
-        <!-- Tab 1: GenAI Foundations & Copilot -->
+        <!-- Tab 1: AI Literacy & Responsible Use -->
         <section id="panel-ws-1" role="tabpanel" aria-labelledby="tab-ws-1" tabindex="0" class="tab-panel active markdown-body">
-          <h2>Generative AI Foundations &amp; Microsoft Copilot</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem;">Introductory and foundational sessions introducing faculty to generative AI models and practical productivity tools.</p>
-          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
-            <li><strong>Introduction to Generative AI</strong> (Nov 2023) — Foundational overview of large language models and higher education impact.</li>
-            <li><strong>Overview and Exploration of Copilot</strong> (Jan 2024) — Hands-on exploration of Microsoft Copilot enterprise capabilities.</li>
-            <li><strong>Prompt Engineering Essentials: A Beginner's Guide</strong> (Feb 2024) — Structuring effective prompts for teaching and research productivity.</li>
-            <li><strong>Introducing Gemini: Google's AI Model</strong> (Sep 2025) — Exploring Google's multimodal AI architecture for academic workflows.</li>
-            <li><strong>Perplexity AI for Teaching and Research: A Practical Introduction</strong> (Sep 2025) — Leveraging conversational search and citation engines for literature reviews.</li>
+          <h2>AI Literacy &amp; Responsible Use</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Sessions focusing on foundational AI understanding, prompt engineering, productivity, and ethical considerations in higher education.</p>
+          <ul class="workshop-title-list">
+            <li>Introduction to Generative AI</li>
+            <li>Overview and Exploration of Copilot</li>
+            <li>Prompt Engineering Essentials: A Beginners Guide</li>
+            <li>Generative AI: What about Ethics?</li>
+            <li>Introducing Gemini: Google’s AI Model</li>
+            <li>Perplexity AI for Teaching and Research: A Practical Introduction</li>
+            <li>Integrating AI for Teaching</li>
+            <li>Maximizing Productivity with TAMU AI Tools</li>
           </ul>
           <div class="tab-footer-nav">
             <span></span>
-            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-2">Next: Pedagogy &amp; Course Design →</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-2">Next: Pedagogy &amp; AI →</button>
           </div>
         </section>
 
-        <!-- Tab 2: Pedagogy & Course Design -->
-        <section id="panel-ws-2" role="tabpanel" aria-labelledby="tab-ws-2" tabindex="0" class="tab-panel markdown-body" hidden>
-          <h2>Pedagogy &amp; Course Design</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem;">Structured course design series establishing foundational learning outcomes, assessments, and engaging student experiences.</p>
-          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
-            <li><strong>Learning Outcomes - Foundations of a Well-Designed Course</strong> (Jun 2024, Nov 2024, Jul 2025) — Crafting measurable learning objectives.</li>
-            <li><strong>Assessments - How Do You Know if Students are Achieving Learning Outcomes?</strong> (Jun 2024, Nov 2024, Jul 2025) — Designing aligned formative and summative assessments.</li>
-            <li><strong>Learning Experiences - Designing for Deep Learning and Student Engagement</strong> (Jul 2024, Nov 2024, Sep 2025) — Active learning strategies and student-centered course structures.</li>
-            <li><strong>Dynamic Engagement with UDL and LMS Tools</strong> (Jan 2025) — Universal Design for Learning principles integrated within digital learning environments.</li>
-            <li><strong>Building Community and Dialogue through Your Assignments</strong> (Sep 2025) — Fostering peer interaction and critical inquiry.</li>
+        <!-- Tab 2: Pedagogy & AI -->
+        <section id="panel-ws-2" role="tabpanel" aria-labelledby="tab-ws-2" tabindex="0" class="tab-panel markdown-body">
+          <h2>Pedagogy &amp; AI</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Pedagogical approaches for embedding generative AI into teaching, higher-order thinking, and domain-specific curricula.</p>
+          <ul class="workshop-title-list">
+            <li>Adapting AI in Education Using Course-Specific Chatbots</li>
+            <li>Designing Higher Order Thinking Questions using Copilot</li>
+            <li>Integrating AI in Medical Work</li>
+            <li>Student-Centered Learning Experience Design with Generative AI</li>
           </ul>
           <div class="tab-footer-nav">
-            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-1">← Previous: GenAI Foundations</button>
-            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-3">Next: Assessment &amp; Analytics →</button>
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-1">← Previous: AI Literacy &amp; Responsible Use</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-3">Next: Course &amp; Learning Design →</button>
           </div>
         </section>
 
-        <!-- Tab 3: Assessment & Analytics -->
-        <section id="panel-ws-3" role="tabpanel" aria-labelledby="tab-ws-3" tabindex="0" class="tab-panel markdown-body" hidden>
-          <h2>Assessment &amp; Learning Analytics</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem;">Workshops leveraging Canvas analytics, formative assessment tools, and peer review strategies.</p>
-          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
-            <li><strong>How can Analytics Shape Your Teaching? Delve into New Analytics in Canvas</strong> (Mar 2024, Jul 2024) — Interpreting LMS engagement data for timely interventions.</li>
-            <li><strong>Data Week: Numbers Don't Lie! Taking Actions with Canvas New Analytics</strong> (Jan 2025) — Actionable data-informed course improvements.</li>
-            <li><strong>Peerceptiv's New Features for Peer Assessment</strong> (Sep 2024) — Implementing structured peer review workflows.</li>
-            <li><strong>Designing Effective Peer Assessments: A Hands-On Workshop with Peerceptiv</strong> (Sep 2025) — Calibrated peer grading rubrics.</li>
-            <li><strong>Click, Engage, Learn: Using Poll Everywhere to Activate Student Thinking</strong> (Sep 2025) — Formative classroom polling and real-time feedback.</li>
+        <!-- Tab 3: Course & Learning Design -->
+        <section id="panel-ws-3" role="tabpanel" aria-labelledby="tab-ws-3" tabindex="0" class="tab-panel markdown-body">
+          <h2>Course &amp; Learning Design</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Intentional instructional design frameworks, assessment alignment, UDL, and community building.</p>
+          <ul class="workshop-title-list">
+            <li>Foundations of a Well-Designed Course</li>
+            <li>How Do You Know if Students are Achieving the Learning Outcomes?</li>
+            <li>Designing for Deep Learning and Student Engagement</li>
+            <li>Dynamic Engagement with UDL and LMS Tools</li>
+            <li>Building Community and Dialogue through Your Assignments</li>
           </ul>
           <div class="tab-footer-nav">
-            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-2">← Previous: Pedagogy</button>
-            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-4">Next: AI Ethics &amp; Chatbots →</button>
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-2">← Previous: Pedagogy &amp; AI</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-4">Next: Learning Technology &amp; Analytics →</button>
           </div>
         </section>
 
-        <!-- Tab 4: AI Ethics & Chatbots -->
-        <section id="panel-ws-4" role="tabpanel" aria-labelledby="tab-ws-4" tabindex="0" class="tab-panel markdown-body" hidden>
-          <h2>AI Ethics, Chatbots &amp; Higher-Order Thinking</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem;">Focusing on academic integrity, ethical frameworks, and course-specific AI assistants.</p>
-          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
-            <li><strong>Generative AI: What about Ethics?</strong> (Mar 2024) — Addressing academic integrity, bias, and institutional guidelines.</li>
-            <li><strong>Adapting AI in Education Using Course-Specific Chatbots</strong> (Sep 2024) — Building custom teaching assistants for specific course domains.</li>
-            <li><strong>Designing Higher Order Thinking Questions using Copilots</strong> (Oct 2024, Mar 2025) — Scaffolding critical thinking through AI prompting.</li>
-            <li><strong>Transforming Course Material into Collaborative Learning</strong> (Jan 2025) — AI-assisted curriculum authoring.</li>
+        <!-- Tab 4: Learning Technology & Analytics -->
+        <section id="panel-ws-4" role="tabpanel" aria-labelledby="tab-ws-4" tabindex="0" class="tab-panel markdown-body">
+          <h2>Learning Technology &amp; Analytics</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Workshops leveraging LMS analytics, collaborative learning technologies, formative assessment, and digital proctoring.</p>
+          <ul class="workshop-title-list">
+            <li>How can Analytics Shape Your Teaching? Delve into New Analytics in Canvas</li>
+            <li>Numbers Don’t Lie! Taking Actions with Canvas New Analytics</li>
+            <li>What If Synthesizing Insights from Canvas Analytic Enhanced the Way We Teach?</li>
+            <li>Engage Your Students Better Using Canvas Course Analytics</li>
+            <li>Peerceptiv’s New Features for Peer Assessment</li>
+            <li>Designing Effective Peer Assessments: A Hands-On Workshop with Peerceptiv</li>
+            <li>Click, Engage, Learn: Using Poll Everywhere to Activate Student Thinking</li>
+            <li>From Clicks to Credits: Leveraging Poll Everywhere for Graded and Formative Assessment</li>
+            <li>Transforming Course Material into Collaborative Learning</li>
+            <li>Integrating Social Learning and Peer Review Strategies</li>
+            <li>Proctoring Your Exam using Respondus LockDown Browser</li>
           </ul>
           <div class="tab-footer-nav">
-            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-3">← Previous: Assessment &amp; Analytics</button>
-            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-ws-5">Next: Advanced Integration →</button>
-          </div>
-        </section>
-
-        <!-- Tab 5: Advanced Integration -->
-        <section id="panel-ws-5" role="tabpanel" aria-labelledby="tab-ws-5" tabindex="0" class="tab-panel markdown-body" hidden>
-          <h2>Advanced Integration &amp; Specialized Workflows</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem;">Advanced pedagogical applications across specialized medical, disciplinary, and productivity workflows.</p>
-          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.7;">
-            <li><strong>Proctoring Your Exam using Respondus LockDown Browser</strong> (Jun 2025) — Secure digital assessment configuration.</li>
-            <li><strong>Integrating AI in Medical Work</strong> (Jun 2025) — Clinical AI literacy and professional application.</li>
-            <li><strong>Integrating Social Learning and Peer Review Strategies</strong> (Jun 2025) — Collaborative cohort learning designs.</li>
-            <li><strong>From Clicks to Credits: Leveraging Poll Everywhere for Graded and Formative Assessment</strong> (Oct 2025) — Blended assessment frameworks.</li>
-            <li><strong>Maximizing Productivity with TAMU AI Tools</strong> (Oct 2025) — Streamlining faculty workflows with institutional tools.</li>
-          </ul>
-          <div class="tab-footer-nav">
-            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-4">← Previous: AI Ethics &amp; Chatbots</button>
-            <a href="#peer-heading" class="btn btn-primary">Scroll to Hear from Peers →</a>
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-ws-3">← Previous: Course &amp; Learning Design</button>
+            <a href="#peer-heading" class="btn btn-primary">Explore Hear from Peers ↓</a>
           </div>
         </section>
 
@@ -176,7 +229,7 @@
     <!-- Section 2: Hear from Peers -->
     <section class="card" id="peer-section" aria-labelledby="peer-heading">
       <h2 id="peer-heading" style="font-size:1.5rem; color:var(--primary); margin-bottom:0.75rem;">Hear from Peers: Navigating AI in the Classroom</h2>
-      <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1rem;">
+      <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.7; margin-bottom:0.5rem;">
         <strong>Initiative Overview:</strong> Founded and currently lead as Organizer and Host for this ongoing institutional webinar series (Fall 2023 – Present). The series creates a collaborative faculty community where educators share classroom-tested strategies, navigate pedagogical challenges, and exchange insights on integrating generative artificial intelligence into diverse disciplines.
       </p>
     </section>
@@ -184,7 +237,7 @@
     <!-- Section 3: AI Playground -->
     <section class="card" id="playground-section" aria-labelledby="playground-heading">
       <h2 id="playground-heading" style="font-size:1.5rem; color:var(--primary); margin-bottom:0.75rem;">AI Playground</h2>
-      <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1rem;">
+      <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.7; margin-bottom:0.5rem;">
         <strong>Initiative Overview:</strong> Lead Facilitator for this hands-on workshop series (Fall 2023 – Present). The AI Playground provides faculty with a safe, experimental environment to test emerging generative tools, practice prompt engineering, and collaborate on building course-specific AI assets with direct pedagogical guidance.
       </p>
     </section>
@@ -204,5 +257,98 @@
   </footer>
 
   <script src="js/app.js"></script>
+
+  <!-- Inline Tab Switcher for Workshops (Direct, responsive, and robust) -->
+  <script>
+    (function() {
+      function setupWorkshopTabs() {
+        var tablist = document.getElementById('workshop-tablist');
+        var panelsWrapper = document.getElementById('workshop-panels-wrapper');
+        if (!tablist || !panelsWrapper) return;
+
+        var tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+        var panels = Array.from(panelsWrapper.children);
+
+        function activateTab(tab) {
+          var targetId = tab.getAttribute('aria-controls');
+          tabs.forEach(function(t) {
+            t.setAttribute('aria-selected', 'false');
+            t.setAttribute('tabindex', '-1');
+          });
+          panels.forEach(function(p) {
+            p.classList.remove('active');
+            p.style.display = 'none';
+          });
+
+          tab.setAttribute('aria-selected', 'true');
+          tab.setAttribute('tabindex', '0');
+
+          var targetPanel = document.getElementById(targetId);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+            targetPanel.style.display = 'block';
+          }
+        }
+
+        tabs.forEach(function(tab, index) {
+          tab.onclick = function(e) {
+            e.preventDefault();
+            activateTab(tab);
+          };
+          tab.onkeydown = function(e) {
+            var newIndex = null;
+            if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+            if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+            if (e.key === 'Home') newIndex = 0;
+            if (e.key === 'End') newIndex = tabs.length - 1;
+            if (newIndex !== null) {
+              e.preventDefault();
+              tabs[newIndex].focus();
+              activateTab(tabs[newIndex]);
+            }
+          };
+        });
+
+        panelsWrapper.querySelectorAll('.tab-step-btn').forEach(function(btn) {
+          btn.onclick = function(e) {
+            e.preventDefault();
+            var targetTabId = btn.getAttribute('data-goto-tab');
+            var targetTab = document.getElementById(targetTabId);
+            if (targetTab) {
+              targetTab.focus();
+              activateTab(targetTab);
+            }
+          };
+        });
+
+        var showAllBtn = document.getElementById('toggle-all-workshop-tabs');
+        if (showAllBtn) {
+          showAllBtn.onclick = function(e) {
+            e.preventDefault();
+            var isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
+            if (isExpanded) {
+              showAllBtn.setAttribute('aria-pressed', 'false');
+              showAllBtn.textContent = '📖 Read All Workshop Topics on One Page';
+              var activeTab = tablist.querySelector('[aria-selected="true"]') || tabs[0];
+              activateTab(activeTab);
+            } else {
+              showAllBtn.setAttribute('aria-pressed', 'true');
+              showAllBtn.textContent = '🗂️ Return to Tabbed View';
+              panels.forEach(function(p) {
+                p.classList.add('active');
+                p.style.display = 'block';
+              });
+            }
+          };
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupWorkshopTabs);
+      } else {
+        setupWorkshopTabs();
+      }
+    })();
+  </script>
 </body>
 </html>
