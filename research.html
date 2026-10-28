@@ -9,6 +9,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Ensure strict width fitting and instant visual switching */
+    #research-tablist {
+      display: grid !important;
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      gap: 0.35rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    #research-tablist .tab-btn {
+      width: 100% !important;
+      padding: 0.55rem 0.25rem !important;
+      font-size: 0.78rem !important;
+      text-align: center !important;
+      justify-content: center !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    @media (max-width: 1024px) {
+      #research-tablist {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+    @media (max-width: 580px) {
+      #research-tablist {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      #research-tablist .tab-btn {
+        font-size: 0.74rem !important;
+        white-space: normal !important;
+      }
+    }
+    /* Tab visibility states */
+    #research-panels-wrapper > section {
+      display: none;
+    }
+    #research-panels-wrapper > section.active {
+      display: block !important;
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -99,7 +140,7 @@
         </section>
 
         <!-- Tab 2: Research Agenda -->
-        <section id="panel-res-2" role="tabpanel" aria-labelledby="tab-res-2" tabindex="0" class="tab-panel markdown-body" hidden>
+        <section id="panel-res-2" role="tabpanel" aria-labelledby="tab-res-2" tabindex="0" class="tab-panel markdown-body">
           <h2>Research Agenda</h2>
           <p>My research is guided by a central question: How can emerging technologies, particularly GenAI, be translated into teaching practices that measurably enhance learning while supporting responsible adoption by educators and institutions? I address this question across three interconnected areas: institutional support and readiness, educator and learner adoption, and the design and evaluation of student-centered learning experiences.</p>
           <div class="tab-footer-nav">
@@ -109,11 +150,11 @@
         </section>
 
         <!-- Tab 3: Readiness and Adoption -->
-        <section id="panel-res-3" role="tabpanel" aria-labelledby="tab-res-3" tabindex="0" class="tab-panel markdown-body" hidden>
+        <section id="panel-res-3" role="tabpanel" aria-labelledby="tab-res-3" tabindex="0" class="tab-panel markdown-body">
           <h2>Readiness and Adoption</h2>
-          <p>At the institutional level, my paper “Generative AI in Higher Education: A Cross-Institutional Study on Faculty Preparation and Resources,” published in Studies in Technology Enhanced Learning [cite: 7, 9], found that research-intensive universities provided strong policy and ethical guidance but limited interactive, research-oriented, and practice-based support for faculty [cite: 9]. This imbalance shows how institutional approaches can prioritize compliance over instructional experimentation, establishing the need to better understand faculty readiness and support [cite: 9].</p>
-          <p>Building on these findings, my study “Assessing Faculty Self-Perceived Knowledge in Using Generative AI to Teach 21st-Century Skills,” published in Frontiers in Education [cite: 7, 9], found that faculty possessed strong pedagogical and content knowledge but lacked confidence in integrating GenAI with pedagogy [cite: 9]. The study identifies a specific readiness gap and supports hands-on, design-centered faculty development rather than information-only training [cite: 9].</p>
-          <p>I extend this research from faculty readiness to student adoption through IRB-approved survey research using the Technology Acceptance Model 2 (TAM2) [cite: 9]. By examining perceived usefulness, ease of use, relevance, and professional readiness, this work provides a learner-centered perspective that complements the faculty findings and informs course design, institutional policy, and instructional decision-making [cite: 9].</p>
+          <p>At the institutional level, my paper “Generative AI in Higher Education: A Cross-Institutional Study on Faculty Preparation and Resources,” published in <em>Studies in Technology Enhanced Learning</em>, found that research-intensive universities provided strong policy and ethical guidance but limited interactive, research-oriented, and practice-based support for faculty. This imbalance shows how institutional approaches can prioritize compliance over instructional experimentation, establishing the need to better understand faculty readiness and support.</p>
+          <p>Building on these findings, my study “Assessing Faculty Self-Perceived Knowledge in Using Generative AI to Teach 21st-Century Skills,” published in <em>Frontiers in Education</em>, found that faculty possessed strong pedagogical and content knowledge but lacked confidence in integrating GenAI with pedagogy. The study identifies a specific readiness gap and supports hands-on, design-centered faculty development rather than information-only training.</p>
+          <p>I extend this research from faculty readiness to student adoption through IRB-approved survey research using the Technology Acceptance Model 2 (TAM2). By examining perceived usefulness, ease of use, relevance, and professional readiness, this work provides a learner-centered perspective that complements the faculty findings and informs course design, institutional policy, and instructional decision-making.</p>
           <div class="tab-footer-nav">
             <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-res-2">← Previous: Research Agenda</button>
             <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-res-4">Next: Learning Interventions →</button>
@@ -121,11 +162,11 @@
         </section>
 
         <!-- Tab 4: Learning Interventions -->
-        <section id="panel-res-4" role="tabpanel" aria-labelledby="tab-res-4" tabindex="0" class="tab-panel markdown-body" hidden>
+        <section id="panel-res-4" role="tabpanel" aria-labelledby="tab-res-4" tabindex="0" class="tab-panel markdown-body">
           <h2>Learning Interventions</h2>
-          <p>A central strand of my research translates findings about readiness and adoption into the design and evaluation of learning interventions [cite: 10]. As Co-Investigator on “Generative AI Integration in Veterinary Education: AI Data Entry, AI Tutor, and AI Literacy Outcomes” [cite: 6, 10], I oversee the evaluation of GenAI’s effects on efficiency, accuracy, and AI literacy in veterinary education [cite: 10]. The study’s first paper, “ChatGPT versus Veterinary Students for Clinical Data Extraction: A Mixed-Methods Study” [cite: 7, 10], is under review [cite: 10]. Together, this work examines evidence-based and ethical models of GenAI integration in a high-stakes professional context [cite: 10].</p>
-          <p>I extend this intervention-focused research into teacher preparation through ArguMath, an AI-simulated environment in which preservice teachers rehearse complex instructional practices through multi-agent, large-language-model simulations [cite: 10]. Our study, “ArguMath: AI-Simulated Environment for Pre-service Teacher Preparation on Facilitating Collective Mathematical Argumentation,” was presented at the 2026 International Conference on Artificial Intelligence in Education in Seoul, South Korea [cite: 7, 10]. Using design-based research, the project integrates learning theory, human-computer interaction, and empirical evaluation to investigate scalable, low-risk opportunities for pedagogical practice and reflection [cite: 10].</p>
-          <p>I further extend this learner-centered agenda from perceptions to measurable learning processes by collaborating with two faculty fellows to investigate how a learning environment integrating Google Gemini with Canvas affects students’ self-regulation and metacognition [cite: 5, 10]. This work examines how GenAI influences learning behaviors and provides evidence for designing AI-supported learning environments that promote more intentional and self-regulated learning [cite: 10].</p>
+          <p>A central strand of my research translates findings about readiness and adoption into the design and evaluation of learning interventions. As Co-Investigator on “Generative AI Integration in Veterinary Education: AI Data Entry, AI Tutor, and AI Literacy Outcomes,” I oversee the evaluation of GenAI’s effects on efficiency, accuracy, and AI literacy in veterinary education. The study’s first paper, “ChatGPT versus Veterinary Students for Clinical Data Extraction: A Mixed-Methods Study,” is under review. Together, this work examines evidence-based and ethical models of GenAI integration in a high-stakes professional context.</p>
+          <p>I extend this intervention-focused research into teacher preparation through ArguMath, an AI-simulated environment in which preservice teachers rehearse complex instructional practices through multi-agent, large-language-model simulations. Our study, “ArguMath: AI-Simulated Environment for Pre-service Teacher Preparation on Facilitating Collective Mathematical Argumentation,” was presented at the 2026 International Conference on Artificial Intelligence in Education in Seoul, South Korea. Using design-based research, the project integrates learning theory, human-computer interaction, and empirical evaluation to investigate scalable, low-risk opportunities for pedagogical practice and reflection.</p>
+          <p>I further extend this learner-centered agenda from perceptions to measurable learning processes by collaborating with two faculty fellows to investigate how a learning environment integrating Google Gemini with Canvas affects students’ self-regulation and metacognition. This work examines how GenAI influences learning behaviors and provides evidence for designing AI-supported learning environments that promote more intentional and self-regulated learning.</p>
           <div class="tab-footer-nav">
             <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-res-3">← Previous: Readiness and Adoption</button>
             <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-res-5">Next: Research Trajectory →</button>
@@ -133,17 +174,17 @@
         </section>
 
         <!-- Tab 5: Research Trajectory -->
-        <section id="panel-res-5" role="tabpanel" aria-labelledby="tab-res-5" tabindex="0" class="tab-panel markdown-body" hidden>
+        <section id="panel-res-5" role="tabpanel" aria-labelledby="tab-res-5" tabindex="0" class="tab-panel markdown-body">
           <h2>Research Trajectory</h2>
-          <p>Building on these interconnected strands, my research trajectory advances three priorities: developing participatory faculty-development models that strengthen pedagogical uses of GenAI; expanding AI-mediated simulations and tutors that support complex teaching and learning practices; and establishing evidence-based frameworks that connect institutional policy, faculty support, and instructional innovation [cite: 10]. Across these priorities, I aim to produce theoretically grounded, empirically rigorous, and practically meaningful scholarship that helps educators, learners, and institutions navigate the evolving landscape of technology-enhanced education [cite: 10].</p>
+          <p>Building on these interconnected strands, my research trajectory advances three priorities: developing participatory faculty-development models that strengthen pedagogical uses of GenAI; expanding AI-mediated simulations and tutors that support complex teaching and learning practices; and establishing evidence-based frameworks that connect institutional policy, faculty support, and instructional innovation. Across these priorities, I aim to produce theoretically grounded, empirically rigorous, and practically meaningful scholarship that helps educators, learners, and institutions navigate the evolving landscape of technology-enhanced education.</p>
           <div class="tab-footer-nav">
             <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-res-4">← Previous: Learning Interventions</button>
             <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-grants">Next: Grants →</button>
           </div>
         </section>
 
-        <!-- Tab 6: Grants (Last Section) -->
-        <section id="panel-grants" role="tabpanel" aria-labelledby="tab-grants" tabindex="0" class="tab-panel markdown-body" hidden>
+        <!-- Tab 6: Grants -->
+        <section id="panel-grants" role="tabpanel" aria-labelledby="tab-grants" tabindex="0" class="tab-panel markdown-body">
           <h2>Funded Grants &amp; Sponsored Research</h2>
           <p style="color:var(--text-muted); margin-bottom:1.5rem;">Sponsored research and collaborative grant funding supporting my research agenda ($132,000+ Total).</p>
 
@@ -220,3 +261,111 @@
 
       </div>
     </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <strong>Armanto Sutedjo, Ph.D.</strong> — Academic Portfolio<br>
+        <span>College Station, TX • <a href="mailto:armanto.sutedjo@gmail.com" style="color:var(--primary);">armanto.sutedjo@gmail.com</a></span>
+      </div>
+      <div>
+        <span>WCAG 2.1 AA/AAA Accessible Digital Dossier</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+
+  <!-- Self-contained, robust inline tab switcher that cannot be broken by asynchronous file fetches -->
+  <script>
+    (function() {
+      function setupTabs() {
+        var tablist = document.getElementById('research-tablist');
+        var panelsWrapper = document.getElementById('research-panels-wrapper');
+        if (!tablist || !panelsWrapper) return;
+
+        var tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+        var panels = Array.from(panelsWrapper.querySelectorAll('[role="tabpanel"]'));
+
+        function activateTab(tab) {
+          var targetId = tab.getAttribute('aria-controls');
+          tabs.forEach(function(t) {
+            t.setAttribute('aria-selected', 'false');
+            t.setAttribute('tabindex', '-1');
+          });
+          panels.forEach(function(p) {
+            p.classList.remove('active');
+          });
+
+          tab.setAttribute('aria-selected', 'true');
+          tab.setAttribute('tabindex', '0');
+
+          var targetPanel = document.getElementById(targetId);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+          }
+        }
+
+        // Direct click & keydown handlers
+        tabs.forEach(function(tab, index) {
+          tab.onclick = function(e) {
+            e.preventDefault();
+            activateTab(tab);
+          };
+          tab.onkeydown = function(e) {
+            var newIndex = null;
+            if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+            if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+            if (e.key === 'Home') newIndex = 0;
+            if (e.key === 'End') newIndex = tabs.length - 1;
+            if (newIndex !== null) {
+              e.preventDefault();
+              tabs[newIndex].focus();
+              activateTab(tabs[newIndex]);
+            }
+          };
+        });
+
+        // Step buttons inside panels
+        panelsWrapper.querySelectorAll('.tab-step-btn').forEach(function(btn) {
+          btn.onclick = function(e) {
+            e.preventDefault();
+            var targetTabId = btn.getAttribute('data-goto-tab');
+            var targetTab = document.getElementById(targetTabId);
+            if (targetTab) {
+              targetTab.focus();
+              activateTab(targetTab);
+            }
+          };
+        });
+
+        // Read all toggle
+        var showAllBtn = document.getElementById('toggle-all-research-tabs');
+        if (showAllBtn) {
+          showAllBtn.onclick = function(e) {
+            e.preventDefault();
+            var isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
+            if (isExpanded) {
+              showAllBtn.setAttribute('aria-pressed', 'false');
+              showAllBtn.textContent = '📖 Read Full Statement on One Page';
+              var activeTab = tablist.querySelector('[aria-selected="true"]') || tabs[0];
+              activateTab(activeTab);
+            } else {
+              showAllBtn.setAttribute('aria-pressed', 'true');
+              showAllBtn.textContent = '🗂️ Return to Tabbed View';
+              panels.forEach(function(p) { p.classList.add('active'); });
+            }
+          };
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupTabs);
+      } else {
+        setupTabs();
+      }
+    })();
+  </script>
+</body>
+</html>
