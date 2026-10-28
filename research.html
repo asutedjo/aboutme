@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Ensure strict width fitting and instant visual switching */
     #research-tablist {
       display: grid !important;
       grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
@@ -42,7 +41,6 @@
         white-space: normal !important;
       }
     }
-    /* Tab visibility states */
     #research-panels-wrapper > section {
       display: none;
     }
@@ -70,12 +68,11 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-link">
         <span class="brand-name">Dr. Armanto Sutedjo</span>
-        <span class="brand-title">Learning, Design &amp; Technology • AI in Education</span>
+        <span class="brand-title">Educational Researcher &amp; Learning Innovation Leader</span>
       </a>
       <nav aria-label="Primary portfolio navigation">
         <ul>
           <li><a href="index.html">Overview</a></li>
-          <li><a href="nexus.html">Research–Teaching Nexus</a></li>
           <li><a href="research.html" aria-current="page">Research & Grants</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="teaching.html">Teaching</a></li>
@@ -277,7 +274,7 @@
 
   <script src="js/app.js"></script>
 
-  <!-- Self-contained, robust inline tab switcher that cannot be broken by asynchronous file fetches -->
+  <!-- Inline Tab Switcher for 100% guarantee -->
   <script>
     (function() {
       function setupTabs() {
@@ -286,7 +283,7 @@
         if (!tablist || !panelsWrapper) return;
 
         var tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
-        var panels = Array.from(panelsWrapper.querySelectorAll('[role="tabpanel"]'));
+        var panels = Array.from(panelsWrapper.children);
 
         function activateTab(tab) {
           var targetId = tab.getAttribute('aria-controls');
@@ -296,6 +293,7 @@
           });
           panels.forEach(function(p) {
             p.classList.remove('active');
+            p.style.display = 'none';
           });
 
           tab.setAttribute('aria-selected', 'true');
@@ -304,10 +302,10 @@
           var targetPanel = document.getElementById(targetId);
           if (targetPanel) {
             targetPanel.classList.add('active');
+            targetPanel.style.display = 'block';
           }
         }
 
-        // Direct click & keydown handlers
         tabs.forEach(function(tab, index) {
           tab.onclick = function(e) {
             e.preventDefault();
@@ -327,7 +325,6 @@
           };
         });
 
-        // Step buttons inside panels
         panelsWrapper.querySelectorAll('.tab-step-btn').forEach(function(btn) {
           btn.onclick = function(e) {
             e.preventDefault();
@@ -340,7 +337,6 @@
           };
         });
 
-        // Read all toggle
         var showAllBtn = document.getElementById('toggle-all-research-tabs');
         if (showAllBtn) {
           showAllBtn.onclick = function(e) {
@@ -354,7 +350,10 @@
             } else {
               showAllBtn.setAttribute('aria-pressed', 'true');
               showAllBtn.textContent = '🗂️ Return to Tabbed View';
-              panels.forEach(function(p) { p.classList.add('active'); });
+              panels.forEach(function(p) {
+                p.classList.add('active');
+                p.style.display = 'block';
+              });
             }
           };
         }
