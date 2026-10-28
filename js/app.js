@@ -994,3 +994,111 @@ function bindWorkshopAccessibleTabs(tablistEl, panelsWrapper) {
     });
   });
 }
+
+
+/* ==========================================================================
+   Dynamic Multi-Tab Builder for Service (service.html)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  initServiceTabsSystem();
+});
+
+function initServiceTabsSystem() {
+  const tablistEl = document.getElementById('service-tablist');
+  const panelsWrapper = document.getElementById('service-panels-wrapper');
+  if (!tablistEl || !panelsWrapper) return;
+
+  const showAllBtn = document.getElementById('toggle-all-service-tabs');
+  bindServiceAccessibleTabs(tablistEl, panelsWrapper);
+
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+      const isExpanded = showAllBtn.getAttribute('aria-pressed') === 'true';
+      const allPanels = panelsWrapper.querySelectorAll('.tab-panel');
+      if (isExpanded) {
+        showAllBtn.setAttribute('aria-pressed', 'false');
+        showAllBtn.textContent = '📖 Read All Service on One Page';
+        const selectedTab = tablistEl.querySelector('[aria-selected="true"]');
+        const activeId = selectedTab ? selectedTab.getAttribute('aria-controls') : (allPanels[0] && allPanels[0].id);
+        allPanels.forEach(p => {
+          if (p.id === activeId) {
+            p.classList.add('active');
+            p.removeAttribute('hidden');
+          } else {
+            p.classList.remove('active');
+            p.setAttribute('hidden', '');
+          }
+        });
+        announce('Switched to tabbed view');
+      } else {
+        showAllBtn.setAttribute('aria-pressed', 'true');
+        showAllBtn.textContent = '🗂️ Return to Tabbed View';
+        allPanels.forEach(p => {
+          p.classList.add('active');
+          p.removeAttribute('hidden');
+        });
+        announce('Showing all service sections on one page');
+      }
+    });
+  }
+}
+
+function bindServiceAccessibleTabs(tablistEl, panelsWrapper) {
+  const tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(panelsWrapper.querySelectorAll('[role="tabpanel"]'));
+
+  function activateTab(tab, setFocus = true) {
+    tabs.forEach(t => {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('hidden', '');
+    });
+
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    if (setFocus) tab.focus();
+
+    const targetId = tab.getAttribute('aria-controls');
+    const targetPanel = document.getElementById(targetId);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      targetPanel.removeAttribute('hidden');
+    }
+
+    const showAllBtn = document.getElementById('toggle-all-service-tabs');
+    if (showAllBtn) {
+      showAllBtn.setAttribute('aria-pressed', 'false');
+      showAllBtn.textContent = '📖 Read All Service on One Page';
+    }
+
+    announce(`Selected tab: ${tab.textContent.trim()}`);
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab, false));
+    tab.addEventListener('keydown', e => {
+      let newIndex = null;
+      if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') newIndex = 0;
+      if (e.key === 'End') newIndex = tabs.length - 1;
+      if (newIndex !== null) {
+        e.preventDefault();
+        activateTab(tabs[newIndex], true);
+      }
+    });
+  });
+
+  panelsWrapper.querySelectorAll('.tab-step-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTabId = btn.getAttribute('data-goto-tab');
+      const targetTab = document.getElementById(targetTabId);
+      if (targetTab) {
+        activateTab(targetTab, true);
+      }
+    });
+  });
+}

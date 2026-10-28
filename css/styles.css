@@ -567,3 +567,14 @@ footer {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* Service 3-Column Tablist Grid */
+#service-tablist {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+@media (max-width: 768px) {
+  #service-tablist {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -46,43 +46,90 @@
   </header>
 
   <main id="main-content" class="container" role="main">
-    <article class="card">
-      <h1 style="font-size:2rem; font-weight:800; color:var(--text-main); margin-bottom:0.75rem;">Service &amp; Professional Governance</h1>
-      <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1.5rem;">
-        My professional service reflects a sustained commitment to advancing the learning sciences, supporting rigorous academic peer review, and providing institutional leadership across instructional technology governance.
-      </p>
-    </article>
+    <div class="card">
+      <div class="tabs-header-bar">
+        <div>
+          <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent);">Professional Governance</span>
+          <h1 id="service-main-heading" style="font-size:2rem; font-weight:800; color:var(--text-main); margin-top:0.2rem;">Service &amp; Academic Leadership</h1>
+        </div>
+        <div>
+          <button type="button" class="btn btn-secondary" id="toggle-all-service-tabs" aria-pressed="false" style="padding:0.5rem 0.9rem; font-size:0.85rem;">
+            📖 Read All Service on One Page
+          </button>
+        </div>
+      </div>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem;">
-      <section class="card">
-        <h2 style="font-size:1.25rem; color:var(--primary); margin-bottom:0.75rem;">External Journal Reviewer</h2>
-        <ul style="margin-left:1.25rem; color:var(--text-muted);">
-          <li>Journal of Educational Technology Development and Exchange (JETDE)</li>
-          <li>AI Enhanced Learning (AIEL) — Association for the Advancement of Computing in Education (AACE)</li>
-          <li>Journal of Online Learning Research (JOLR) — AACE</li>
-          <li>Discover Education — Springer Nature</li>
-          <li>Frontiers in Artificial Intelligence — Frontiers</li>
-          <li>Education Sciences — MDPI</li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2 style="font-size:1.25rem; color:var(--primary); margin-bottom:0.75rem;">Conference Proposal Reviewer</h2>
-        <ul style="margin-left:1.25rem; color:var(--text-muted);">
-          <li>Association for Educational Communications and Technology (AECT) Annual Conference</li>
-          <li>American Educational Research Association (AERA) Annual Conference</li>
-          <li>EDUCAUSE Annual Conference</li>
-          <li>Institute of Data Sciences Proposal Review</li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2 style="font-size:1.25rem; color:var(--primary); margin-bottom:0.75rem;">University Committees</h2>
-        <ul style="margin-left:1.25rem; color:var(--text-muted);">
-          <li>Center for Teaching Excellence Generative AI Committee — Committee Lead</li>
-          <li>Digital Learning Environment Advisory Committee (Enterprise Learning Tools Subgroup) — Committee Lead</li>
-          <li>Center for Teaching Excellence Vision Committee — Member</li>
-          <li>First-Year Student Experience (Hullabaloo U) Mental Health and Wellness Committee — Member</li>
-        </ul>
-      </section>
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.25rem;">
+        Select any tab below (or use the <code>Left</code> and <code>Right</code> arrow keys) to explore my peer review roles and institutional committee service.
+      </p>
+
+      <!-- Accessible ARIA Tablist (3 tabs fitting strict width-fit grid) -->
+      <div class="tablist-nav" id="service-tablist" role="tablist" aria-label="Service Categories">
+        <button type="button" role="tab" class="tab-btn" id="tab-srv-1" aria-selected="true" aria-controls="panel-srv-1" tabindex="0">
+          Journal Reviewer
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-srv-2" aria-selected="false" aria-controls="panel-srv-2" tabindex="-1">
+          Conference Reviewer
+        </button>
+        <button type="button" role="tab" class="tab-btn" id="tab-srv-3" aria-selected="false" aria-controls="panel-srv-3" tabindex="-1">
+          University Committees
+        </button>
+      </div>
+
+      <!-- Tab Panels Container -->
+      <div id="service-panels-wrapper">
+
+        <!-- Tab 1: Journal Reviewer -->
+        <section id="panel-srv-1" role="tabpanel" aria-labelledby="tab-srv-1" tabindex="0" class="tab-panel active markdown-body">
+          <h2>External Journal Reviewer</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Providing rigorous, constructive peer review for leading scholarly journals in educational technology, learning sciences, and artificial intelligence in education.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.8;">
+            <li><strong>Journal of Educational Technology Development and Exchange (JETDE)</strong></li>
+            <li><strong>AI Enhanced Learning (AIEL)</strong> — Association for the Advancement of Computing in Education (AACE)</li>
+            <li><strong>Journal of Online Learning Research (JOLR)</strong> — AACE</li>
+            <li><strong>Discover Education</strong> — Springer Nature</li>
+            <li><strong>Frontiers in Artificial Intelligence</strong> — Frontiers</li>
+            <li><strong>Education Sciences</strong> — MDPI</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <span></span>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-srv-2">Next: Conference Reviewer →</button>
+          </div>
+        </section>
+
+        <!-- Tab 2: Conference Reviewer -->
+        <section id="panel-srv-2" role="tabpanel" aria-labelledby="tab-srv-2" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>Conference Proposal Reviewer</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Evaluating research proposals and conference submissions for premier international and national professional associations.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.8;">
+            <li><strong>Association for Educational Communications and Technology (AECT)</strong> Annual Conference Proposal Reviewer</li>
+            <li><strong>American Educational Research Association (AERA)</strong> Annual Conference Proposal Reviewer</li>
+            <li><strong>EDUCAUSE</strong> Annual Conference Reviewer</li>
+            <li><strong>Texas A&amp;M Institute of Data Sciences</strong> Seed Proposal Reviewer</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-srv-1">← Previous: Journal Reviewer</button>
+            <button type="button" class="btn btn-primary tab-step-btn" data-goto-tab="tab-srv-3">Next: University Committees →</button>
+          </div>
+        </section>
+
+        <!-- Tab 3: University Committees -->
+        <section id="panel-srv-3" role="tabpanel" aria-labelledby="tab-srv-3" tabindex="0" class="tab-panel markdown-body" hidden>
+          <h2>University &amp; Institutional Committees</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Serving in leadership and advisory roles shaping institutional teaching excellence, digital learning environments, and student wellness.</p>
+          <ul style="margin-left:1.25rem; color:var(--text-muted); line-height:1.8;">
+            <li><strong>Center for Teaching Excellence Generative AI Committee</strong> — Committee Lead</li>
+            <li><strong>Digital Learning Environment Advisory Committee (Enterprise Learning Tools Subgroup)</strong> — Committee Lead</li>
+            <li><strong>Center for Teaching Excellence Vision Committee</strong> — Member</li>
+            <li><strong>First-Year Student Experience (Hullabaloo U) Mental Health and Wellness Committee</strong> — Member</li>
+          </ul>
+          <div class="tab-footer-nav">
+            <button type="button" class="btn btn-secondary tab-step-btn" data-goto-tab="tab-srv-2">← Previous: Conference Reviewer</button>
+            <a href="initiatives.html" class="btn btn-primary">Explore Initiatives →</a>
+          </div>
+        </section>
+
+      </div>
     </div>
   </main>
 
